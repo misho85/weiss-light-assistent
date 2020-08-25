@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MagnifyingGlass } from '../../icons';
 import Input from './Input';
+import Checkbox from './Checkbox';
+import RecomendedLux from './RecomendedLux';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
   border-radius: 2em;
   background-color: ${p => p.theme.colors.white};
   margin-bottom: 1.2em;
-  padding: 3%;
+  padding: 3% 8%;
 `;
 
 const Header = styled.div`
@@ -51,6 +52,7 @@ const InputBox = styled.div`
 
     > span {
       margin-left: 0.5em;
+      width: 2.4em;
     }
   }
 `;
@@ -59,7 +61,7 @@ function Form() {
   return (
     <Wrapper>
       <Header>
-        <p>Vrsta objekta</p>
+        <p>Dimenzije objekta</p>
       </Header>
       <Box>
         <BoxLeft>
@@ -81,7 +83,9 @@ function Form() {
             <p>Željeni LUX</p>
             <div>
               <Input />
-              <span>m2</span>
+              <span>
+                <RecomendedLux />
+              </span>
             </div>
           </InputBox>
         </BoxLeft>
@@ -89,15 +93,13 @@ function Form() {
           <InputBox>
             <p>Osvetliti zidove</p>
             <div>
-              <Input />
-              <span>m2</span>
+              <Checkbox />
             </div>
           </InputBox>
           <InputBox>
             <p>Osvetliti zidove</p>
             <div>
-              <Input />
-              <span>m2</span>
+              <Checkbox />
             </div>
           </InputBox>
         </BoxRight>

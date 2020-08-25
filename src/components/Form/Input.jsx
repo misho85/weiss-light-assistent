@@ -6,6 +6,7 @@ import { useFormContext } from 'react-hook-form';
 const InputContainer = styled.div`
   position: relative;
   width: 7em;
+  height: 2.4em;
   display: flex;
   flex-direction: column;
 

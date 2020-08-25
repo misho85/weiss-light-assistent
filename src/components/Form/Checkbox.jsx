@@ -1,71 +1,80 @@
-// import React from 'react';
-// import styled from 'styled-components';
-// import { Plus, Bin } from '../../icons';
-// import Item from './Item';
+import React, { useState, useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
+import styled, { css } from 'styled-components';
+import { Check } from '../../icons';
 
-// const Wrapper = styled.div`
-//   width: 100%;
-//   height: auto;
-//   border-radius: 2em;
-//   background-color: ${p => p.theme.colors.white};
-//   margin-bottom: 1.2em;
-//   padding: 3%;
-// `;
+const Wrapper = styled.div``;
 
-// const Header = styled.div`
-//   position: relative;
-//   text-align: center;
-//   margin-bottom: 1em;
+const HiddenCheckbox = styled.input`
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px !important;
+`;
 
-//   > p {
-//     font-size: 1.5em;
-//     font-weight: 600;
-//   }
-// `;
+const CheckboxContainer = styled.div`
+  display: flex;
+  align-items: center;
+  transition: all 200ms;
+  height: 2.4em;
+  width: 2.4em;
+  border-radius: 0.4em;
+  background-color: ${p => p.theme.colors.gray};
+  cursor: pointer;
 
-// const Icons = styled.div`
-//   position: absolute;
-//   left: 0;
+  svg {
+    width: 2em;
+    height: 2em;
+  }
 
-//   > svg {
-//     width: 1.5em;
-//     height: 1.5em;
+  ${p =>
+    p.checked
+      ? css`
+          svg #formCheck {
+            transition: all 150ms ease-in-out;
+            stroke: #027cb2;
+          }
+        `
+      : css`
+          svg #formCheck {
+            transition: all 150ms ease-in-out;
+            stroke: transparent;
+          }
+        `}
+`;
 
-//     &:first-child {
-//       margin-right: 1em;
-//     }
-//   }
-// `;
+const Checkbox = ({ hidden, submited }) => {
+  const { register } = useFormContext();
 
-// const Box = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(3, minmax(0, 1fr));
-//   grid-template-rows: repeat(2, minmax(auto, 1fr));
-//   grid-column-gap: 0.3em;
-//   grid-row-gap: 1em;
-//   grid-auto-flow: dense;
-// `;
+  const [state, setState] = useState({ checked: false });
 
-// function List() {
-//   return (
-//     <Wrapper>
-//       <Header>
-//         <Icons>
-//           <Plus />
-//           <Bin />
-//         </Icons>
-//         <p>Vrsta objekta</p>
-//       </Header>
-//       <Box>
-//         <Item />
-//         <Item />
-//         <Item />
-//         <Item />
-//         <Item />
-//         <Item />
-//       </Box>
-//     </Wrapper>
-//   );
-// }
+  const handleCheckboxChange = event => {
+    setState({ ...state, checked: event.target.checked });
+  };
 
-// export default List;
+  useEffect(() => setState({ checked: false }), [submited]);
+
+  return (
+    <Wrapper onChange={handleCheckboxChange}>
+      <label>
+        <HiddenCheckbox
+          ref={register}
+          type="checkbox"
+          name="Newsletter"
+          checked={state.checked}
+        />
+        <CheckboxContainer checked={state.checked}>
+          <Check />
+        </CheckboxContainer>
+      </label>
+    </Wrapper>
+  );
+};
+
+export default Checkbox;
