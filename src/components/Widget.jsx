@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useForm, FormProvider } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
 import List from './List';
 import Form from './Form';
 
-const Wrapper = styled.form``;
+const Wrapper = styled.div``;
 
 const TitleBox = styled.div`
   text-align: end;
@@ -51,36 +48,21 @@ const Submit = styled.button`
   }
 `;
 
-const validationSchema = yup.object().shape({
-  kvadratura: yup.number().required('Kvadratura is required!'),
-  visina: yup.number().required('Visina is required!'),
-  lux: yup.number().required('Lux is required!'),
-});
-
 function Widget() {
-  const methods = useForm({
-    mode: 'onBlur',
-    resolver: yupResolver(validationSchema),
-  });
-
-  const onSubmit = data => {
-    console.log(data);
-  };
-
   return (
-    <FormProvider {...methods}>
-      <Wrapper onSubmit={methods.handleSubmit(onSubmit)}>
-        <TitleBox>
-          <Brand>Weiss light </Brand>
-          <Name>Assistent</Name>
-        </TitleBox>
-        <Box>
-          <List />
-          <Form />
-          <Submit type="submit">Obračunaj</Submit>
-        </Box>
-      </Wrapper>
-    </FormProvider>
+    <Wrapper>
+      <TitleBox>
+        <Brand>Weiss light </Brand>
+        <Name>Assistent</Name>
+      </TitleBox>
+      <Box>
+        <List />
+        <Form />
+        <Submit type="submit" form="calc-form">
+          Obračunaj
+        </Submit>
+      </Box>
+    </Wrapper>
   );
 }
 

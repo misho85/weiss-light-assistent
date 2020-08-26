@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm, FormProvider } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import RecomendedLux from './RecomendedLux';
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   width: 100%;
   height: auto;
   border-radius: 2em;
@@ -57,54 +60,71 @@ const InputBox = styled.div`
   }
 `;
 
+const validationSchema = yup.object().shape({
+  kvadratura: yup.number().required('Kvadratura is required!'),
+  visina: yup.number().required('Visina is required!'),
+  lux: yup.number().required('Lux is required!'),
+});
+
 function Form() {
+  const methods = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
-    <Wrapper>
-      <Header>
-        <p>Dimenzije objekta</p>
-      </Header>
-      <Box>
-        <BoxLeft>
-          <InputBox>
-            <p>Kvadratura</p>
-            <div>
-              <Input type="number" name="kvadratura" required />
-              <span>m2</span>
-            </div>
-          </InputBox>
-          <InputBox>
-            <p>Visina</p>
-            <div>
-              <Input type="number" name="visina" required />
-              <span>m</span>
-            </div>
-          </InputBox>
-          <InputBox>
-            <p>Željeni LUX</p>
-            <div>
-              <Input type="number" name="lux" required />
-              <span>
-                <RecomendedLux />
-              </span>
-            </div>
-          </InputBox>
-        </BoxLeft>
-        <BoxRight>
-          <InputBox>
-            <p>Osvetliti zidove</p>
-            <div>
-              <Checkbox name="zidovi" />
-            </div>
-          </InputBox>
-          <InputBox>
-            <p>Osvetliti podove</p>
-            <div>
-              <Checkbox name="podovi" />
-            </div>
-          </InputBox>
-        </BoxRight>
-      </Box>
-    </Wrapper>
+    <FormProvider {...methods}>
+      <Wrapper onSubmit={methods.handleSubmit(onSubmit)} id="calc-form">
+        <Header>
+          <p>Dimenzije objekta</p>
+        </Header>
+        <Box>
+          <BoxLeft>
+            <InputBox>
+              <p>Kvadratura</p>
+              <div>
+                <Input type="number" name="kvadratura" required />
+                <span>m2</span>
+              </div>
+            </InputBox>
+            <InputBox>
+              <p>Visina</p>
+              <div>
+                <Input type="number" name="visina" required />
+                <span>m</span>
+              </div>
+            </InputBox>
+            <InputBox>
+              <p>Željeni LUX</p>
+              <div>
+                <Input type="number" name="lux" required />
+                <span>
+                  <RecomendedLux />
+                </span>
+              </div>
+            </InputBox>
+          </BoxLeft>
+          <BoxRight>
+            <InputBox>
+              <p>Osvetliti zidove</p>
+              <div>
+                <Checkbox name="zidovi" />
+              </div>
+            </InputBox>
+            <InputBox>
+              <p>Osvetliti podove</p>
+              <div>
+                <Checkbox name="podovi" />
+              </div>
+            </InputBox>
+          </BoxRight>
+        </Box>
+      </Wrapper>
+    </FormProvider>
   );
 }
 

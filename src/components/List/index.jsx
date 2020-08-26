@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import { Plus, Bin } from '../../icons';
+import { Plus, Bin, Pen } from '../../icons';
 import { ListContext } from '../../context/ListContext';
 import Item from './Item';
 
@@ -24,7 +24,7 @@ const Header = styled.div`
   }
 `;
 
-const Icons = styled.div`
+const IconsLeft = styled.div`
   position: absolute;
   left: 0;
 
@@ -38,8 +38,23 @@ const Icons = styled.div`
   }
 `;
 
+const IconsRight = styled.div`
+  position: absolute;
+  right: 0;
+
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+
+    &:first-child {
+      margin-right: 1em;
+    }
+  }
+`;
+
 const Remove = styled.button``;
 const Add = styled.button``;
+const Edit = styled.button``;
 
 const Box = styled.div`
   display: grid;
@@ -50,33 +65,68 @@ const Box = styled.div`
   grid-auto-flow: dense;
 `;
 
+const initialItem = {
+  id: Date.now(),
+  label: '',
+  kvadratura: 0,
+  visina: 0,
+  zidovi: false,
+  podovi: false,
+};
+
 export default function List() {
   const { state, dispatch } = useContext(ListContext);
 
-  function handleAdd(item) {
-    // dispatch({ type: 'ADD_ITEM', payload: item });
-  }
+  const [addActive, setAddActive] = useState(false);
 
-  function handleRemove() {
+  const handleAdd = item => {
+    // dispatch({ type: 'ADD_ITEM', payload: item });
+    setAddActive(true);
+  };
+
+  const handleRemove = () => {
     dispatch({ type: 'REMOVE_ITEM', payload: state.selected });
-  }
+  };
+
+  const [editActive, setEditActive] = useState(false);
+
+  const editActiveOn = () => setEditActive(true);
 
   return (
     <Wrapper>
       <Header>
-        <Icons>
+        <IconsLeft>
           <Add onClick={handleAdd}>
             <Plus />
           </Add>
+        </IconsLeft>
+        <IconsRight>
+          <Edit onClick={editActiveOn}>
+            <Pen />
+          </Edit>
           <Remove onClick={handleRemove}>
             <Bin />
           </Remove>
-        </Icons>
+        </IconsRight>
         <p>Vrsta objekta</p>
       </Header>
       <Box>
+        {addActive && (
+          <Item
+            data={initialItem}
+            // selected={true}
+            editActive={true}
+            setEditActive={setEditActive}
+          />
+        )}
         {state.items.map(el => (
-          <Item key={el.id} data={el} selected={el.id === state.selected.id} />
+          <Item
+            key={el.id}
+            data={el}
+            selected={el.id === state.selected.id}
+            editActive={el.id === state.selected.id && editActive}
+            setEditActive={setEditActive}
+          />
         ))}
       </Box>
     </Wrapper>

@@ -57,6 +57,13 @@ export default function reducer(state, action) {
         ...state,
         selected: action.payload,
       };
+    case 'EDIT_ITEM':
+      const itemReplacer = (array, oldItem, newItem) =>
+        array.map(item => (item === oldItem ? newItem : item));
+      return {
+        ...state,
+        items: itemReplacer(state.items, state.selected, action.payload),
+      };
     default:
       return state;
   }
