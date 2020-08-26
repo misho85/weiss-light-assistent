@@ -75,6 +75,8 @@ function Form() {
     resolver: yupResolver(validationSchema),
   });
 
+  const { handleSubmit, setValue } = methods;
+
   const onSubmit = data => {
     console.log(data);
 
@@ -83,6 +85,7 @@ function Form() {
       label: state.selected.label,
       kvadratura: data.kvadratura,
       visina: data.visina,
+      lux: data.lux,
       zidovi: data.zidovi,
       podovi: data.podovi,
     };
@@ -92,16 +95,16 @@ function Form() {
   };
 
   useEffect(() => {
-    methods.setValue('kvadratura', state.selected.kvadratura);
-    methods.setValue('visina', state.selected.visina);
-    methods.setValue('lux', state.selected.lux);
-    methods.setValue('zidovi', state.selected.zidovi);
-    methods.setValue('podovi', state.selected.podovi);
-  }, [state.selected, methods]);
+    setValue('kvadratura', state.selected.kvadratura);
+    setValue('visina', state.selected.visina);
+    setValue('lux', state.selected.lux);
+    setValue('zidovi', state.selected.zidovi);
+    setValue('podovi', state.selected.podovi);
+  }, [state.selected, setValue]);
 
   return (
     <FormProvider {...methods}>
-      <Wrapper onSubmit={methods.handleSubmit(onSubmit)} id="calc-form">
+      <Wrapper onSubmit={handleSubmit(onSubmit)} id="calc-form">
         <Header>
           <p>Dimenzije objekta</p>
         </Header>

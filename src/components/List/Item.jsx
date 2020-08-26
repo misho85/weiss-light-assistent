@@ -74,6 +74,10 @@ function Item({ selected, data, editActive, setEditActive }) {
     if (!data.label) setIsInput(true);
   }, [editActive, data.label]);
 
+  useEffect(() => {
+    dispatch({ type: 'SELECT_ITEM', payload: data });
+  }, [dispatch, data]);
+
   return (
     <>
       {isInput ? (
