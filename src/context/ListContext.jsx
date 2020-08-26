@@ -71,7 +71,10 @@ export default function reducer(state, action) {
 
 export const ListProvider = ({ children }) => {
   // create a global store to store the state
-  const globalStore = usePersistedContext(useContext(ListContext), 'state');
+  const globalStore = usePersistedContext(
+    useContext(ListContext),
+    'object_types'
+  );
 
   // `todos` will be a state manager to manage state.
   const [state, dispatch] = usePersistedReducer(

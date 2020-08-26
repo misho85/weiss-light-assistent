@@ -80,7 +80,7 @@ function Item({ selected, data, editActive, setEditActive }) {
         <Input
           value={itemName}
           autoFocus={true}
-          placeholder="new item name"
+          placeholder="naziv objekta"
           onKeyUp={handleEnter}
           onChange={handleItemNameChange}
           onBlur={handleBlur}

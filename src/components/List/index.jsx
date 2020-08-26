@@ -53,7 +53,15 @@ const IconsRight = styled.div`
 `;
 
 const Remove = styled.button``;
-const Add = styled.button``;
+
+const Add = styled.button`
+  cursor: ${p => (p.disabled ? `not-allowed` : `pointer`)};
+
+  > svg {
+    opacity: ${p => (p.disabled ? 0.5 : 1)};
+  }
+`;
+
 const Edit = styled.button``;
 
 const Box = styled.div`
@@ -81,6 +89,7 @@ export default function List() {
       zidovi: false,
       podovi: false,
     };
+
     dispatch({ type: 'ADD_ITEM', payload: initialItem });
     dispatch({ type: 'SELECT_ITEM', payload: initialItem });
     setAddActive(true);
@@ -90,7 +99,7 @@ export default function List() {
     dispatch({ type: 'REMOVE_ITEM', payload: state.selected });
     dispatch({
       type: 'SELECT_ITEM',
-      payload: state.items[state.items.length - 2],
+      payload: state.items[state.items.length - 1],
     });
   };
 
@@ -102,7 +111,7 @@ export default function List() {
     <Wrapper>
       <Header>
         <IconsLeft>
-          <Add onClick={handleAdd}>
+          <Add onClick={handleAdd} disabled={state.items.length >= 6}>
             <Plus />
           </Add>
         </IconsLeft>
