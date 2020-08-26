@@ -65,27 +65,33 @@ const Box = styled.div`
   grid-auto-flow: dense;
 `;
 
-const initialItem = {
-  id: Date.now(),
-  label: '',
-  kvadratura: 0,
-  visina: 0,
-  zidovi: false,
-  podovi: false,
-};
-
 export default function List() {
   const { state, dispatch } = useContext(ListContext);
 
   const [addActive, setAddActive] = useState(false);
 
+  console.log('addActive', addActive);
+
   const handleAdd = item => {
-    // dispatch({ type: 'ADD_ITEM', payload: item });
+    const initialItem = {
+      id: Date.now(),
+      label: '',
+      kvadratura: 0,
+      visina: 0,
+      zidovi: false,
+      podovi: false,
+    };
+    dispatch({ type: 'ADD_ITEM', payload: initialItem });
+    dispatch({ type: 'SELECT_ITEM', payload: initialItem });
     setAddActive(true);
   };
 
   const handleRemove = () => {
     dispatch({ type: 'REMOVE_ITEM', payload: state.selected });
+    dispatch({
+      type: 'SELECT_ITEM',
+      payload: state.items[state.items.length - 2],
+    });
   };
 
   const [editActive, setEditActive] = useState(false);
@@ -111,14 +117,6 @@ export default function List() {
         <p>Vrsta objekta</p>
       </Header>
       <Box>
-        {addActive && (
-          <Item
-            data={initialItem}
-            // selected={true}
-            editActive={true}
-            setEditActive={setEditActive}
-          />
-        )}
         {state.items.map(el => (
           <Item
             key={el.id}

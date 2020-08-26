@@ -45,13 +45,10 @@ function Item({ selected, data, editActive, setEditActive }) {
 
   const handleSelect = () => dispatch({ type: 'SELECT_ITEM', payload: data });
 
-  // const handleAdd = item => {
-  // dispatch({ type: 'ADD_ITEM', payload: item });
-  // };
-
   const handleItemNameChange = e => setItemName(e.target.value);
 
-  const handleEditLabel = label => {
+  const handleEditLabel = labelName => {
+    const label = labelName ? labelName : 'novi objekat';
     dispatch({ type: 'EDIT_ITEM', payload: { ...data, label } });
   };
 
@@ -74,7 +71,8 @@ function Item({ selected, data, editActive, setEditActive }) {
   useEffect(() => {
     if (editActive) setIsInput(true);
     if (!editActive) setIsInput(false);
-  }, [editActive]);
+    if (!data.label) setIsInput(true);
+  }, [editActive, data.label]);
 
   return (
     <>
