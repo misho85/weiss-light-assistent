@@ -13,6 +13,29 @@ export default createGlobalStyle`
     border: initial;
   }
 
+   /*
+    The following CSS rules leverage classes that are dynamically applied to elements by
+    focus-visible-polyfill. The purpose of the polyfill is to hide or show focus rings for
+    users based on  how they navigate the site. Generally, users who navigate with their
+    keyboard will still see focus rings while users who navigate with mouse/touch will not.
+    For more details: https://github.com/WICG/focus-visible
+  */ 
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+
+  button.focus-visible,
+  input.focus-visible + .checkable {
+    outline: none;
+    box-shadow: 0 0 0 2px #12222e;
+  }
+
   /* remove arrows from number input */
 
   /* Chrome, Safari, Edge, Opera */
@@ -139,9 +162,9 @@ export default createGlobalStyle`
   }
 
   button {
+    cursor: pointer;
     padding: 0;
     font-family: ${p => p.theme.fonts.body};
-    cursor: pointer;
   }
 
   button, [type="button"], [type="reset"], [type="submit"] {

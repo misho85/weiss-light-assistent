@@ -52,7 +52,9 @@ const Submit = styled.button`
 `;
 
 const validationSchema = yup.object().shape({
-  message: yup.number().required('Message is required!'),
+  kvadratura: yup.number().required('Kvadratura is required!'),
+  visina: yup.number().required('Visina is required!'),
+  lux: yup.number().required('Lux is required!'),
 });
 
 function Widget() {
@@ -67,7 +69,7 @@ function Widget() {
 
   return (
     <FormProvider {...methods}>
-      <Wrapper>
+      <Wrapper onSubmit={methods.handleSubmit(onSubmit)}>
         <TitleBox>
           <Brand>Weiss light </Brand>
           <Name>Assistent</Name>

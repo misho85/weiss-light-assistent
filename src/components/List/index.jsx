@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Plus, Bin } from '../../icons';
+import { ListContext } from '../../context/ListContext';
 import Item from './Item';
 
 const Wrapper = styled.div`
@@ -27,7 +28,7 @@ const Icons = styled.div`
   position: absolute;
   left: 0;
 
-  > svg {
+  svg {
     width: 1.5em;
     height: 1.5em;
 
@@ -36,6 +37,9 @@ const Icons = styled.div`
     }
   }
 `;
+
+const Remove = styled.button``;
+const Add = styled.button``;
 
 const Box = styled.div`
   display: grid;
@@ -46,26 +50,35 @@ const Box = styled.div`
   grid-auto-flow: dense;
 `;
 
-function List() {
+export default function List() {
+  const { state, dispatch } = useContext(ListContext);
+
+  function handleAdd(item) {
+    // dispatch({ type: 'ADD_ITEM', payload: item });
+  }
+
+  function handleRemove() {
+    dispatch({ type: 'REMOVE_ITEM', payload: state.selected });
+  }
+
   return (
     <Wrapper>
       <Header>
         <Icons>
-          <Plus />
-          <Bin />
+          <Add onClick={handleAdd}>
+            <Plus />
+          </Add>
+          <Remove onClick={handleRemove}>
+            <Bin />
+          </Remove>
         </Icons>
         <p>Vrsta objekta</p>
       </Header>
       <Box>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {state.items.map(el => (
+          <Item key={el.id} data={el} selected={el.id === state.selected.id} />
+        ))}
       </Box>
     </Wrapper>
   );
 }
-
-export default List;

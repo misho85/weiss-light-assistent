@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GlobalStyle } from './styles';
+import { ListProvider } from './context/ListContext';
 import Widget from './components/Widget';
 
 const Wrapper = styled.div`
@@ -15,7 +16,9 @@ function App() {
   return (
     <Wrapper>
       <GlobalStyle />
-      <Widget />
+      <ListProvider>
+        <Widget />
+      </ListProvider>
     </Wrapper>
   );
 }

@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'focus-visible/dist/focus-visible';
 
 ReactDOM.render(
   <React.StrictMode>

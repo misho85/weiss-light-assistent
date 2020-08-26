@@ -49,7 +49,6 @@ const Input = ({
   autoComplete,
   required,
   disabled,
-  rows,
 }) => {
   const { register, errors, formState } = useFormContext();
 
@@ -78,22 +77,17 @@ const Input = ({
 
 Input.defaultProps = {
   type: '',
-  textarea: false,
   disabled: false,
   autoComplete: 'off',
-  rows: 10,
   required: false,
 };
 
 Input.propTypes = {
   type: PropTypes.string,
-  textarea: PropTypes.bool,
   autoComplete: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
-  rows: PropTypes.number,
 };
 
 export default Input;

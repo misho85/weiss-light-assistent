@@ -49,7 +49,7 @@ const CheckboxContainer = styled.div`
         `}
 `;
 
-const Checkbox = ({ hidden, submited }) => {
+const Checkbox = ({ name, submited }) => {
   const { register } = useFormContext();
 
   const [state, setState] = useState({ checked: false });
@@ -66,7 +66,7 @@ const Checkbox = ({ hidden, submited }) => {
         <HiddenCheckbox
           ref={register}
           type="checkbox"
-          name="Newsletter"
+          name={name}
           checked={state.checked}
         />
         <CheckboxContainer checked={state.checked}>

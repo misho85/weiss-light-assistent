@@ -68,21 +68,21 @@ function Form() {
           <InputBox>
             <p>Kvadratura</p>
             <div>
-              <Input />
+              <Input type="number" name="kvadratura" required />
               <span>m2</span>
             </div>
           </InputBox>
           <InputBox>
             <p>Visina</p>
             <div>
-              <Input />
-              <span>m2</span>
+              <Input type="number" name="visina" required />
+              <span>m</span>
             </div>
           </InputBox>
           <InputBox>
             <p>Željeni LUX</p>
             <div>
-              <Input />
+              <Input type="number" name="lux" required />
               <span>
                 <RecomendedLux />
               </span>
@@ -93,13 +93,13 @@ function Form() {
           <InputBox>
             <p>Osvetliti zidove</p>
             <div>
-              <Checkbox />
+              <Checkbox name="zidovi" />
             </div>
           </InputBox>
           <InputBox>
-            <p>Osvetliti zidove</p>
+            <p>Osvetliti podove</p>
             <div>
-              <Checkbox />
+              <Checkbox name="podovi" />
             </div>
           </InputBox>
         </BoxRight>
