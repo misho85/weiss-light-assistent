@@ -49,8 +49,8 @@ const CheckboxContainer = styled.div`
         `}
 `;
 
-const Checkbox = ({ name, submited }) => {
-  const { register } = useFormContext();
+const Checkbox = ({ name }) => {
+  const { register, getValues } = useFormContext();
 
   const [state, setState] = useState({ checked: false });
 
@@ -58,7 +58,9 @@ const Checkbox = ({ name, submited }) => {
     setState({ ...state, checked: event.target.checked });
   };
 
-  useEffect(() => setState({ checked: false }), [submited]);
+  useEffect(() => setState({ checked: false }), []);
+
+  console.log('checked', getValues());
 
   return (
     <Wrapper onChange={handleCheckboxChange}>

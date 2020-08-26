@@ -86,6 +86,7 @@ export default function List() {
       label: '',
       kvadratura: 0,
       visina: 0,
+      lux: 0,
       zidovi: false,
       podovi: false,
     };

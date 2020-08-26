@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
+import { ListContext } from '../../context/ListContext';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import RecomendedLux from './RecomendedLux';
@@ -67,6 +68,8 @@ const validationSchema = yup.object().shape({
 });
 
 function Form() {
+  const { state, dispatch } = useContext(ListContext);
+
   const methods = useForm({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
@@ -74,7 +77,27 @@ function Form() {
 
   const onSubmit = data => {
     console.log(data);
+
+    const item = {
+      id: state.selected.id,
+      label: state.selected.label,
+      kvadratura: data.kvadratura,
+      visina: data.visina,
+      zidovi: data.zidovi,
+      podovi: data.podovi,
+    };
+
+    dispatch({ type: 'EDIT_ITEM', payload: item });
+    console.log(item);
   };
+
+  useEffect(() => {
+    methods.setValue('kvadratura', state.selected.kvadratura);
+    methods.setValue('visina', state.selected.visina);
+    methods.setValue('lux', state.selected.lux);
+    methods.setValue('zidovi', state.selected.zidovi);
+    methods.setValue('podovi', state.selected.podovi);
+  }, [state.selected, methods]);
 
   return (
     <FormProvider {...methods}>
