@@ -1,5 +1,6 @@
 import React, { useState, useContext, memo } from 'react';
 import styled, { css } from 'styled-components';
+import Tooltip from '@reach/tooltip';
 import { Plus, Bin, Pen } from '../../icons';
 import { ListContext } from '../../context/ListContext';
 import Item from './Item';
@@ -110,17 +111,23 @@ const List = () => {
     <Wrapper>
       <Header>
         <IconsLeft>
-          <Add onClick={handleAdd} disabled={state.items.length >= 6}>
-            <Plus />
-          </Add>
+          <Tooltip label="Dodaj Objekat">
+            <Add onClick={handleAdd} disabled={state.items.length >= 6}>
+              <Plus />
+            </Add>
+          </Tooltip>
         </IconsLeft>
         <IconsRight>
-          <Edit onClick={editActiveOn} disabled={state.items.length < 1}>
-            <Pen />
-          </Edit>
-          <Remove onClick={handleRemove} disabled={state.items.length < 1}>
-            <Bin />
-          </Remove>
+          <Tooltip label="Preimenuj Objekat">
+            <Edit onClick={editActiveOn} disabled={state.items.length < 1}>
+              <Pen />
+            </Edit>
+          </Tooltip>
+          <Tooltip label="Ukloni Objekat">
+            <Remove onClick={handleRemove} disabled={state.items.length < 1}>
+              <Bin />
+            </Remove>
+          </Tooltip>
         </IconsRight>
         <p>Vrsta objekta</p>
       </Header>

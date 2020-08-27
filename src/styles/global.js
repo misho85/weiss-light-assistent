@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import '@reach/tooltip/styles.css';
 
 export default createGlobalStyle`
   ${normalize}
@@ -169,6 +170,15 @@ export default createGlobalStyle`
 
   button, [type="button"], [type="reset"], [type="submit"] {
     appearance: none;
+  }
+
+
+  [data-reach-tooltip] {
+    background: hsla(0, 0%, 0%, 0.75);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5em 1em;
   }
   
 `;
