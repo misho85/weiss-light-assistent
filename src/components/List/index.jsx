@@ -1,5 +1,5 @@
 import React, { useState, useContext, memo } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Plus, Bin, Pen } from '../../icons';
 import { ListContext } from '../../context/ListContext';
 import Item from './Item';
@@ -24,9 +24,8 @@ const Header = styled.div`
   }
 `;
 
-const IconsLeft = styled.div`
+const iconsMixin = css`
   position: absolute;
-  left: 0;
 
   svg {
     width: 1.5em;
@@ -36,25 +35,19 @@ const IconsLeft = styled.div`
       margin-right: 1em;
     }
   }
+`;
+
+const IconsLeft = styled.div`
+  ${iconsMixin}
+  left: 0;
 `;
 
 const IconsRight = styled.div`
-  position: absolute;
+  ${iconsMixin}
   right: 0;
-
-  svg {
-    width: 1.5em;
-    height: 1.5em;
-
-    &:first-child {
-      margin-right: 1em;
-    }
-  }
 `;
 
-const Remove = styled.button``;
-
-const Add = styled.button`
+const disabledMixin = css`
   cursor: ${p => (p.disabled ? `not-allowed` : `pointer`)};
 
   > svg {
@@ -62,7 +55,17 @@ const Add = styled.button`
   }
 `;
 
-const Edit = styled.button``;
+const Remove = styled.button`
+  ${disabledMixin}
+`;
+
+const Add = styled.button`
+  ${disabledMixin}
+`;
+
+const Edit = styled.button`
+  ${disabledMixin}
+`;
 
 const Box = styled.div`
   display: grid;
@@ -76,7 +79,7 @@ const Box = styled.div`
 const List = () => {
   const { state, dispatch } = useContext(ListContext);
 
-  const handleAdd = item => {
+  const handleAdd = () => {
     const initialItem = {
       id: Date.now(),
       label: '',
@@ -112,10 +115,10 @@ const List = () => {
           </Add>
         </IconsLeft>
         <IconsRight>
-          <Edit onClick={editActiveOn}>
+          <Edit onClick={editActiveOn} disabled={state.items.length < 1}>
             <Pen />
           </Edit>
-          <Remove onClick={handleRemove}>
+          <Remove onClick={handleRemove} disabled={state.items.length < 1}>
             <Bin />
           </Remove>
         </IconsRight>
