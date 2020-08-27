@@ -1,7 +1,8 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
+import { ListContext } from '../../context/ListContext';
 import { Check } from '../../icons';
 
 const Wrapper = styled.div``;
@@ -53,8 +54,11 @@ const CheckboxContainer = styled.div`
 const Checkbox = ({ name, defaultChecked }) => {
   const [checked, setChecked] = useState(defaultChecked);
   const { register } = useFormContext();
+  const { state } = useContext(ListContext);
 
-  useEffect(() => setChecked(defaultChecked), [defaultChecked]);
+  useEffect(() => {
+    setChecked(state.selected[name]);
+  }, [state.selected, name]);
 
   const handleCheckboxChange = e => setChecked(e.target.checked);
   const toggleCheckbox = () => setChecked(!checked);
