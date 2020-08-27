@@ -1,6 +1,7 @@
 import React, { useState, memo } from 'react';
 import styled from 'styled-components';
-import { MagnifyingGlass } from '../../icons';
+import { MagnifyingGlass } from '../../../icons';
+import AutoComplete from './AutoComplete';
 
 const Wrapper = styled.div`
   position: relative;
@@ -31,14 +32,12 @@ const RecomendedLux = () => {
 
   const toggleActive = () => setActive(!active);
 
-  // napraviti outsideClick umesto blur
-  const disableActive = () => setActive(false);
-
   return (
-    <Wrapper active={active} onBlur={disableActive}>
+    <Wrapper active={active}>
       <Search onClick={toggleActive}>
         <MagnifyingGlass />
       </Search>
+      {active && <AutoComplete />}
     </Wrapper>
   );
 };
