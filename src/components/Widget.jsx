@@ -44,7 +44,7 @@ const Submit = styled.button`
   margin: auto;
 
   &:hover {
-    border: none;
+    opacity: 0.7;
   }
 `;
 

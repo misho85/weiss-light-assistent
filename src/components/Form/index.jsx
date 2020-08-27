@@ -78,8 +78,6 @@ function Form() {
   const { handleSubmit, setValue } = methods;
 
   const onSubmit = data => {
-    console.log(data);
-
     const item = {
       id: state.selected.id,
       label: state.selected.label,
@@ -91,7 +89,6 @@ function Form() {
     };
 
     dispatch({ type: 'EDIT_ITEM', payload: item });
-    console.log(item);
   };
 
   useEffect(() => {
@@ -138,13 +135,19 @@ function Form() {
             <InputBox>
               <p>Osvetliti zidove</p>
               <div>
-                <Checkbox name="zidovi" />
+                <Checkbox
+                  name="zidovi"
+                  defaultChecked={state.selected.zidovi}
+                />
               </div>
             </InputBox>
             <InputBox>
               <p>Osvetliti podove</p>
               <div>
-                <Checkbox name="podovi" />
+                <Checkbox
+                  name="podovi"
+                  defaultChecked={state.selected.podovi}
+                />
               </div>
             </InputBox>
           </BoxRight>

@@ -66,8 +66,6 @@ function Item({ selected, data, editActive, setEditActive }) {
     setEditActive(false);
   };
 
-  console.log(`${itemName}-${editActive}`);
-
   useEffect(() => {
     if (editActive) setIsInput(true);
     if (!editActive) setIsInput(false);

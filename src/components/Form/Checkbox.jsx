@@ -49,32 +49,27 @@ const CheckboxContainer = styled.div`
         `}
 `;
 
-const Checkbox = ({ name }) => {
-  const { register, getValues } = useFormContext();
+const Checkbox = ({ name, defaultChecked }) => {
+  const [checked, setChecked] = useState(defaultChecked || false);
+  const { register } = useFormContext();
 
-  const [state, setState] = useState({ checked: false });
+  useEffect(() => setChecked(defaultChecked), [defaultChecked]);
 
-  const handleCheckboxChange = event => {
-    setState({ ...state, checked: event.target.checked });
-  };
-
-  useEffect(() => setState({ checked: false }), []);
-
-  console.log('checked', getValues());
+  const handleCheckboxChange = e => setChecked(e.target.checked);
+  const toggleCheckbox = () => setChecked(!checked);
 
   return (
-    <Wrapper onChange={handleCheckboxChange}>
-      <label>
-        <HiddenCheckbox
-          ref={register}
-          type="checkbox"
-          name={name}
-          checked={state.checked}
-        />
-        <CheckboxContainer checked={state.checked}>
-          <Check />
-        </CheckboxContainer>
-      </label>
+    <Wrapper onClick={toggleCheckbox}>
+      <HiddenCheckbox
+        ref={register}
+        type="checkbox"
+        name={name}
+        checked={checked}
+        onChange={handleCheckboxChange}
+      />
+      <CheckboxContainer checked={checked}>
+        <Check />
+      </CheckboxContainer>
     </Wrapper>
   );
 };

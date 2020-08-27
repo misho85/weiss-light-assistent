@@ -76,9 +76,7 @@ const Box = styled.div`
 export default function List() {
   const { state, dispatch } = useContext(ListContext);
 
-  const [addActive, setAddActive] = useState(false);
-
-  console.log('addActive', addActive);
+  // console.log('addActive', addActive);
 
   const handleAdd = item => {
     const initialItem = {
@@ -93,7 +91,6 @@ export default function List() {
 
     dispatch({ type: 'ADD_ITEM', payload: initialItem });
     dispatch({ type: 'SELECT_ITEM', payload: initialItem });
-    setAddActive(true);
   };
 
   const handleRemove = () => {
