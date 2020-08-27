@@ -35,7 +35,7 @@ const initialState = {
 
 export const ListContext = createContext(initialState);
 
-export default function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       // return current state if empty
@@ -71,7 +71,7 @@ export default function reducer(state, action) {
     default:
       return state;
   }
-}
+};
 
 export const ListProvider = ({ children }) => {
   // create a global store to store the state

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, memo } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { ListContext } from '../../context/ListContext';
 
@@ -37,7 +38,7 @@ const Input = styled.input`
 
 const Label = styled.p``;
 
-function Item({ selected, data, editActive, setEditActive }) {
+const Item = ({ selected, data, editActive, setEditActive }) => {
   const [itemName, setItemName] = useState(data.label);
   const [isInput, setIsInput] = useState(false);
 
@@ -94,6 +95,21 @@ function Item({ selected, data, editActive, setEditActive }) {
       )}
     </>
   );
-}
+};
 
-export default Item;
+Item.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+    kvadratura: PropTypes.number.isRequired,
+    visina: PropTypes.number.isRequired,
+    lux: PropTypes.number.isRequired,
+    podovi: PropTypes.bool.isRequired,
+    zidovi: PropTypes.bool.isRequired,
+  }).isRequired,
+  editActive: PropTypes.bool.isRequired,
+  setEditActive: PropTypes.func.isRequired,
+};
+
+export default memo(Item);

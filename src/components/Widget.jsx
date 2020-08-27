@@ -48,22 +48,20 @@ const Submit = styled.button`
   }
 `;
 
-function Widget() {
-  return (
-    <Wrapper>
-      <TitleBox>
-        <Brand>Weiss light </Brand>
-        <Name>Assistent</Name>
-      </TitleBox>
-      <Box>
-        <List />
-        <Form />
-        <Submit type="submit" form="calc-form">
-          Obračunaj
-        </Submit>
-      </Box>
-    </Wrapper>
-  );
-}
+const Widget = () => (
+  <Wrapper>
+    <TitleBox>
+      <Brand>Weiss light </Brand>
+      <Name>Assistent</Name>
+    </TitleBox>
+    <Box>
+      <List />
+      <Form />
+      <Submit type="submit" form="calc-form">
+        Obračunaj
+      </Submit>
+    </Box>
+  </Wrapper>
+);
 
 export default Widget;

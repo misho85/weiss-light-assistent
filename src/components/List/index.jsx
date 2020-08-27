@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, memo } from 'react';
 import styled from 'styled-components';
 import { Plus, Bin, Pen } from '../../icons';
 import { ListContext } from '../../context/ListContext';
@@ -73,10 +73,8 @@ const Box = styled.div`
   grid-auto-flow: dense;
 `;
 
-export default function List() {
+const List = () => {
   const { state, dispatch } = useContext(ListContext);
-
-  // console.log('addActive', addActive);
 
   const handleAdd = item => {
     const initialItem = {
@@ -136,4 +134,6 @@ export default function List() {
       </Box>
     </Wrapper>
   );
-}
+};
+
+export default memo(List);

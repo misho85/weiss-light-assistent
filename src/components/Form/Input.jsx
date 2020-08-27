@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useFormContext } from 'react-hook-form';
@@ -45,12 +45,12 @@ const InputContainer = styled.div`
 const Input = ({
   type,
   name,
-  placeholder,
-  autoComplete,
-  required,
-  disabled,
+  placeholder = '',
+  autoComplete = 'off',
+  required = false,
+  disabled = false,
 }) => {
-  const { register, errors, formState } = useFormContext();
+  const { register, errors } = useFormContext();
 
   return (
     <InputContainer error={errors[name]}>
@@ -68,26 +68,17 @@ const Input = ({
         disabled={disabled}
         ref={register({ required })}
       />
-      {/* {required &&
-        formState.touched[name] &&
-        (errors[name] ? <FormFalse /> : <FormTrue />)} */}
     </InputContainer>
   );
 };
 
-Input.defaultProps = {
-  type: '',
-  disabled: false,
-  autoComplete: 'off',
-  required: false,
-};
-
 Input.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   autoComplete: PropTypes.string,
   disabled: PropTypes.bool,
-  name: PropTypes.string.isRequired,
   required: PropTypes.bool,
 };
 
-export default Input;
+export default memo(Input);

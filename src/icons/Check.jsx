@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Check = ({ stroke = '#027cb2', ...props }) => (
   <svg
@@ -20,4 +20,4 @@ const Check = ({ stroke = '#027cb2', ...props }) => (
   </svg>
 );
 
-export default Check;
+export default memo(Check);

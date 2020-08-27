@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { MagnifyingGlass } from '../../icons';
 
@@ -19,12 +19,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const RecomendedLux = () => {
-  return (
-    <Wrapper>
-      <MagnifyingGlass />
-    </Wrapper>
-  );
-};
+const RecomendedLux = () => (
+  <Wrapper>
+    <MagnifyingGlass />
+  </Wrapper>
+);
 
-export default RecomendedLux;
+export default memo(RecomendedLux);

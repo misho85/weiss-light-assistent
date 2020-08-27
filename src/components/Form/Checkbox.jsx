@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { Check } from '../../icons';
@@ -50,7 +51,7 @@ const CheckboxContainer = styled.div`
 `;
 
 const Checkbox = ({ name, defaultChecked }) => {
-  const [checked, setChecked] = useState(defaultChecked || false);
+  const [checked, setChecked] = useState(defaultChecked);
   const { register } = useFormContext();
 
   useEffect(() => setChecked(defaultChecked), [defaultChecked]);
@@ -74,4 +75,9 @@ const Checkbox = ({ name, defaultChecked }) => {
   );
 };
 
-export default Checkbox;
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  defaultChecked: PropTypes.bool.isRequired,
+};
+
+export default memo(Checkbox);

@@ -67,7 +67,7 @@ const validationSchema = yup.object().shape({
   lux: yup.number().required('Lux is required!'),
 });
 
-function Form() {
+const Form = () => {
   const { state, dispatch } = useContext(ListContext);
 
   const methods = useForm({
@@ -137,7 +137,7 @@ function Form() {
               <div>
                 <Checkbox
                   name="zidovi"
-                  defaultChecked={state.selected.zidovi}
+                  defaultChecked={!!state.selected.zidovi}
                 />
               </div>
             </InputBox>
@@ -146,7 +146,7 @@ function Form() {
               <div>
                 <Checkbox
                   name="podovi"
-                  defaultChecked={state.selected.podovi}
+                  defaultChecked={!!state.selected.podovi}
                 />
               </div>
             </InputBox>
@@ -155,6 +155,6 @@ function Form() {
       </Wrapper>
     </FormProvider>
   );
-}
+};
 
 export default Form;
