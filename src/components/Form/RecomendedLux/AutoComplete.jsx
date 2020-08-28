@@ -31,7 +31,7 @@ const Combobox = styled.div`
 `;
 
 const Dropdown = styled.ul`
-  max-height: 6em;
+  max-height: 8em;
   overflow-y: scroll;
   background-color: ${p => p.theme.colors.white};
   list-style: none;
@@ -133,7 +133,6 @@ const AutoComplete = () => {
           placeholder="predlozi"
         />
       </Combobox>
-
       {isOpen && (
         <Dropdown {...getMenuProps()}>
           {inputItems.map((item, index) => (

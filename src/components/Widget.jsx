@@ -42,9 +42,10 @@ const Submit = styled.button`
   width: auto;
   padding: 3% 5%;
   margin: auto;
+  transition: all 200ms;
 
   &:hover {
-    opacity: 0.7;
+    background-color: ${p => p.theme.colors.pink};
   }
 `;
 

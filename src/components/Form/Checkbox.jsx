@@ -35,6 +35,11 @@ const CheckboxContainer = styled.div`
     height: 2em;
   }
 
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 3px ${p => p.theme.colors.pink};
+  }
+
   ${p =>
     p.checked
       ? css`

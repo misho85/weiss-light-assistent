@@ -72,7 +72,7 @@ const Box = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(auto, 1fr));
-  grid-column-gap: 0.3em;
+  grid-column-gap: 0.5em;
   grid-row-gap: 1em;
   grid-auto-flow: dense;
 `;

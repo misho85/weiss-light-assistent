@@ -32,7 +32,7 @@ const Input = styled.input`
   appearance: none;
 
   &:focus {
-    box-shadow: 0 0 0 2px ${p => p.theme.colors.blueLight};
+    box-shadow: 0 0 0 3px ${p => p.theme.colors.pink};
   }
 `;
 
