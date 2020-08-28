@@ -63,45 +63,48 @@ const Item = styled.li`
   padding-left: 1em;
 `;
 
-// const items = [
-//   { value: 'apple' },
-//   { value: 'pear' },
-//   { value: 'orange' },
-//   { value: 'grape' },
-//   { value: 'banana' },
-// ];
-
 const items = [
-  'Neptunium',
-  'Plutonium',
-  'Americium',
-  'Curium',
-  'Berkelium',
-  'Californium',
-  'Einsteinium',
-  'Fermium',
-  'Mendelevium',
-  'Nobelium',
-  'Lawrencium',
-  'Rutherfordium',
-  'Dubnium',
-  'Seaborgium',
-  'Bohrium',
-  'Hassium',
-  'Meitnerium',
-  'Darmstadtium',
-  'Roentgenium',
-  'Copernicium',
-  'Nihonium',
-  'Flerovium',
-  'Moscovium',
-  'Livermorium',
-  'Tennessine',
-  'Oganesson',
+  {
+    label: 'pekara',
+    value: 300,
+  },
+  {
+    label: 'zubar',
+    value: 1000,
+  },
+  {
+    label: 'magacin',
+    value: 5000,
+  },
+  {
+    label: 'obucar',
+    value: 400,
+  },
+  {
+    label: 'stadion',
+    value: 50000,
+  },
+  {
+    label: 'market',
+    value: 10000,
+  },
+  {
+    label: 'picerija',
+    value: 600,
+  },
+  {
+    label: 'bioskop',
+    value: 8000,
+  },
+  {
+    label: 'frizer',
+    value: 4500,
+  },
 ];
 
-const AutoComplete = () => {
+const AutoComplete = ({ setSelectedItem }) => {
   const [inputItems, setInputItems] = useState(items);
+
   const {
     isOpen,
     getLabelProps,
@@ -113,10 +116,14 @@ const AutoComplete = () => {
     openMenu,
   } = useCombobox({
     items: inputItems,
+    onSelectedItemChange: ({ selectedItem }) => {
+      setSelectedItem(selectedItem.value);
+    },
+    itemToString: item => (item ? item.label : ''),
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
         items.filter(item =>
-          item.toLowerCase().startsWith(inputValue.toLowerCase())
+          item.label.toLowerCase().startsWith(inputValue.toLowerCase())
         )
       );
     },
@@ -130,22 +137,25 @@ const AutoComplete = () => {
       <Combobox {...getComboboxProps()}>
         <input
           {...getInputProps({ onFocus: () => openMenu() })}
-          placeholder="predlozi"
+          type="text"
+          placeholder="Predlozi"
         />
       </Combobox>
-      {isOpen && (
-        <Dropdown {...getMenuProps()}>
-          {inputItems.map((item, index) => (
-            <Item
-              {...getItemProps({ item, index })}
-              key={`${item}${index}`}
-              highlight={highlightedIndex === index}
-            >
-              {item}
-            </Item>
-          ))}
-        </Dropdown>
-      )}
+      <div {...getMenuProps()}>
+        {isOpen && (
+          <Dropdown>
+            {inputItems.map((item, index) => (
+              <Item
+                {...getItemProps({ item, index })}
+                key={`${item.label}${index}`}
+                highlight={highlightedIndex === index}
+              >
+                {item.label}
+              </Item>
+            ))}
+          </Dropdown>
+        )}
+      </div>
     </SearchWrapper>
   );
 };

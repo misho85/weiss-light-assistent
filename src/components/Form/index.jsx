@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
@@ -77,6 +77,10 @@ const Form = () => {
 
   const { handleSubmit, setValue } = methods;
 
+  const [selectedItem, setSelectedItem] = useState(0);
+
+  useEffect(() => setValue('lux', selectedItem), [selectedItem, setValue]);
+
   const onSubmit = data => {
     const item = {
       id: state.selected.id,
@@ -126,7 +130,7 @@ const Form = () => {
               <div>
                 <Input type="number" name="lux" required />
                 <span>
-                  <RecomendedLux />
+                  <RecomendedLux setSelectedItem={setSelectedItem} />
                 </span>
               </div>
             </InputBox>

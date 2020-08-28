@@ -27,7 +27,7 @@ const Search = styled.button`
   }
 `;
 
-const RecomendedLux = () => {
+const RecomendedLux = ({ setSelectedItem }) => {
   const [active, setActive] = useState(false);
 
   const toggleActive = () => setActive(!active);
@@ -37,7 +37,7 @@ const RecomendedLux = () => {
       <Search onClick={toggleActive}>
         <MagnifyingGlass />
       </Search>
-      {active && <AutoComplete />}
+      {active && <AutoComplete setSelectedItem={setSelectedItem} />}
     </Wrapper>
   );
 };
