@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import List from './List';
 import Form from './Form';
+import Products from './Products';
 
 const Wrapper = styled.div``;
 
@@ -9,6 +10,7 @@ const TitleBox = styled.div`
   text-align: end;
   padding-right: 10%;
   margin-bottom: 0.5em;
+  width: 50em;
 
   > span {
     font-size: 2em;
@@ -23,6 +25,17 @@ const Name = styled.span`
   font-weight: 600;
 `;
 
+const Container = styled.div`
+  width: ${p => (p.active ? `auto` : `50em`)};
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: ${p => p.theme.colors.grayLight};
+  border-top: 0.5em solid ${p => p.theme.colors.blueLight};
+  transition: all 0.2s ease-in-out;
+`;
+
 const Box = styled.div`
   width: 50em;
   height: auto;
@@ -30,9 +43,7 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${p => p.theme.colors.grayLight};
-  border-top: 0.5em solid ${p => p.theme.colors.blueLight};
-  padding: 3% 10%;
+  padding: 1.5em 4.5em;
 `;
 
 const Submit = styled.button`
@@ -49,20 +60,30 @@ const Submit = styled.button`
   }
 `;
 
-const Widget = () => (
-  <Wrapper>
-    <TitleBox>
-      <Brand>Weiss light </Brand>
-      <Name>Assistent</Name>
-    </TitleBox>
-    <Box>
-      <List />
-      <Form />
-      <Submit type="submit" form="calc-form">
-        Obračunaj
-      </Submit>
-    </Box>
-  </Wrapper>
-);
+const Widget = () => {
+  const [active, setActive] = useState(false);
+
+  // const activeOn = () => setActive(true);
+  const toggleActive = () => setActive(!active);
+
+  return (
+    <Wrapper>
+      <TitleBox>
+        <Brand>Weiss light </Brand>
+        <Name>Assistent</Name>
+      </TitleBox>
+      <Container active={active}>
+        <Box>
+          <List />
+          <Form />
+          <Submit type="submit" form="calc-form" onClick={toggleActive}>
+            Obračunaj
+          </Submit>
+        </Box>
+        {active && <Products />}
+      </Container>
+    </Wrapper>
+  );
+};
 
 export default Widget;

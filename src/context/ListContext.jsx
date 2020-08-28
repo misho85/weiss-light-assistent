@@ -53,16 +53,19 @@ const reducer = (state, action) => {
     case 'REMOVE_ITEM':
       return {
         ...state,
-        items: state.items.filter(t => t !== action.payload),
+        items: state.items.filter(t => t.id !== action.payload.id),
       };
     case 'SELECT_ITEM':
       return {
         ...state,
-        selected: action.payload,
+        selected: {
+          ...action.payload,
+          lumen: action.payload.kvadratura * action.payload.lux,
+        },
       };
     case 'EDIT_ITEM':
       const itemReplacer = (array, oldItem, newItem) =>
-        array.map(item => (item === oldItem ? newItem : item));
+        array.map(item => (item.id === oldItem.id ? newItem : item));
 
       return {
         ...state,
