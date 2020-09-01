@@ -4,7 +4,14 @@ import List from './List';
 import Form from './Form';
 import Products from './Products';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const WidgetWrapper = styled.div``;
 
 const TitleBox = styled.div`
   text-align: end;
@@ -26,8 +33,8 @@ const Name = styled.span`
 `;
 
 const Container = styled.div`
-  width: ${p => (p.active ? `auto` : `50em`)};
-  height: auto;
+  width: 50em;
+  height: 40em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -68,20 +75,22 @@ const Widget = () => {
 
   return (
     <Wrapper>
-      <TitleBox>
-        <Brand>Weiss light </Brand>
-        <Name>Assistent</Name>
-      </TitleBox>
-      <Container active={active}>
-        <Box>
-          <List />
-          <Form />
-          <Submit type="submit" form="calc-form" onClick={toggleActive}>
-            Obračunaj
-          </Submit>
-        </Box>
-        {active && <Products />}
-      </Container>
+      <WidgetWrapper>
+        <TitleBox>
+          <Brand>Weiss light </Brand>
+          <Name>Assistent</Name>
+        </TitleBox>
+        <Container active={active}>
+          <Box>
+            <List />
+            <Form />
+            <Submit type="submit" form="calc-form" onClick={toggleActive}>
+              Obračunaj
+            </Submit>
+          </Box>
+        </Container>
+      </WidgetWrapper>
+      {active && <Products />}
     </Wrapper>
   );
 };
