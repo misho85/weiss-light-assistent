@@ -22,9 +22,10 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5em 4.5em;
+  padding: 1em 1.5em 0 1.5em;
   background-color: ${p => p.theme.colors.grayLight};
   border-top: 0.5em solid ${p => p.theme.colors.grayLight};
+  overflow: auto;
 `;
 
 const Products = () => (

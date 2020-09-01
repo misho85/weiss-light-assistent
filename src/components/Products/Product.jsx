@@ -3,29 +3,94 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 6em;
+  height: 6.5em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 2em;
-  background-color: ${p => p.theme.colors.white};
-  margin-bottom: 1.2em;
-  padding: 3%;
+  margin-bottom: 1.1em;
+`;
+
+const ImageBox = styled.div`
+  height: 100%;
+  width: 8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${p => p.theme.colors.gray};
+  border-radius: 1em;
 `;
 
 const Image = styled.img`
-  height: 100%;
+  width: 7em;
 `;
 
-const Info = styled.div``;
+const Title = styled.p`
+  width: 6em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5em;
+`;
+
+const Info = styled.div`
+  background-color: ${p => p.theme.colors.gray};
+  border-radius: 1em;
+  width: 100%;
+  height: 100%;
+  margin-left: 1em;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const Data = styled.div`
+  border-right: 1px solid black;
+  height: 100%;
+  width: 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:last-child {
+    border-right: none;
+  }
+`;
+
+const Power = styled.p`
+  font-weight: bold;
+  margin-bottom: 1em;
+`;
+
+const Count = styled.p``;
 
 const Product = ({ data }) => (
   <Wrapper>
+    <ImageBox>
+      <Image src={data.slika} />
+      <Title>{data.ime}</Title>
+    </ImageBox>
     <Info>
-      <p>{data.ime}</p>
+      <Data>
+        <Power>10W</Power>
+        <Count>100X</Count>
+      </Data>
+      <Data>
+        <Power>15W</Power>
+        <Count>80X</Count>
+      </Data>
+      <Data>
+        <Power>30W</Power>
+        <Count>20X</Count>
+      </Data>
+      <Data />
+      <Data />
+      <Data />
+      <Data />
     </Info>
-    <Image src={data.slika} />
   </Wrapper>
 );
 
