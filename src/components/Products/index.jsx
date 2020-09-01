@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import Tooltip from '@reach/tooltip';
+import { ResultsContext } from '../../context/ResultsContext';
+import { Plus } from '../../icons';
 import data from '../../data/products';
 import Product from './Product';
 
 const Wrapper = styled.div`
   margin-left: 2em;
+  position: relative;
 `;
 
 const Title = styled.p`
@@ -28,15 +32,40 @@ const Box = styled.div`
   overflow: auto;
 `;
 
-const Products = () => (
-  <Wrapper>
-    <Title>Potrebna rasveta</Title>
-    <Box>
-      {data.map(el => {
-        return <Product key={el.id} data={el} />;
-      })}
-    </Box>
-  </Wrapper>
-);
+const Close = styled.button`
+  position: absolute;
+  right: 0;
+  width: 2.5em;
+  height: 2.5em;
+
+  > svg {
+    width: 2em;
+    height: 2em;
+    transform: rotate(45deg);
+    fill: red;
+  }
+`;
+
+const Products = () => {
+  const { setShowResults } = useContext(ResultsContext);
+
+  const closeList = () => setShowResults(false);
+
+  return (
+    <Wrapper>
+      <Tooltip label="Zatvori listu">
+        <Close onClick={closeList}>
+          <Plus />
+        </Close>
+      </Tooltip>
+      <Title>Potrebna rasveta</Title>
+      <Box>
+        {data.map(el => (
+          <Product key={el.id} data={el} />
+        ))}
+      </Box>
+    </Wrapper>
+  );
+};
 
 export default Products;

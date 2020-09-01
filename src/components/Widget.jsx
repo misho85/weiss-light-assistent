@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ResultsContext } from '../context/ResultsContext';
 import List from './List';
 import Form from './Form';
 import Products from './Products';
@@ -68,10 +69,7 @@ const Submit = styled.button`
 `;
 
 const Widget = () => {
-  const [active, setActive] = useState(false);
-
-  // const activeOn = () => setActive(true);
-  const toggleActive = () => setActive(!active);
+  const { showResults } = useContext(ResultsContext);
 
   return (
     <Wrapper>
@@ -80,17 +78,17 @@ const Widget = () => {
           <Brand>Weiss light </Brand>
           <Name>Assistent</Name>
         </TitleBox>
-        <Container active={active}>
+        <Container>
           <Box>
             <List />
             <Form />
-            <Submit type="submit" form="calc-form" onClick={toggleActive}>
+            <Submit type="submit" form="calc-form">
               Obračunaj
             </Submit>
           </Box>
         </Container>
       </WidgetWrapper>
-      {active && <Products />}
+      {showResults && <Products />}
     </Wrapper>
   );
 };

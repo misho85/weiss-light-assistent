@@ -67,6 +67,7 @@ const Input = ({
         autoComplete={autoComplete}
         disabled={disabled}
         ref={register({ required })}
+        min={1}
       />
     </InputContainer>
   );

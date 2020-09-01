@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GlobalStyle } from './styles';
 import { ListProvider } from './context/ListContext';
+import { ResultsProvider } from './context/ResultsContext';
 import Widget from './components/Widget';
 
 const Wrapper = styled.div`
@@ -18,7 +19,9 @@ function App() {
     <Wrapper>
       <GlobalStyle />
       <ListProvider>
-        <Widget />
+        <ResultsProvider>
+          <Widget />
+        </ResultsProvider>
       </ListProvider>
     </Wrapper>
   );

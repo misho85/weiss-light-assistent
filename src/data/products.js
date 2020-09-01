@@ -4,6 +4,8 @@ import ledLane from '../assets/images/WL-LED-LANE.png';
 import reflektor from '../assets/images/WL-LED-REFLEKTOR.png';
 import zvono from '../assets/images/WLZ-KLASIK.png';
 
+// broj tipova ogranicen na 7
+
 export default [
   {
     id: 1,

@@ -4,6 +4,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { ListContext } from '../../context/ListContext';
+import { ResultsContext } from '../../context/ResultsContext';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import RecomendedLux from './RecomendedLux';
@@ -64,11 +65,12 @@ const InputBox = styled.div`
 const validationSchema = yup.object().shape({
   kvadratura: yup.number().required('Kvadratura is required!'),
   visina: yup.number().required('Visina is required!'),
-  lux: yup.number().required('Lux is required!'),
+  lux: yup.number().min(1).required('Lux is required!'),
 });
 
 const Form = () => {
   const { state, dispatch } = useContext(ListContext);
+  const { setShowResults } = useContext(ResultsContext);
 
   const methods = useForm({
     mode: 'onBlur',
@@ -93,6 +95,8 @@ const Form = () => {
     };
 
     dispatch({ type: 'EDIT_ITEM', payload: item });
+
+    setShowResults(true);
   };
 
   useEffect(() => {

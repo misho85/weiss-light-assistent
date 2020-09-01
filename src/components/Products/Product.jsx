@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ListContext } from '../../context/ListContext';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -67,31 +68,39 @@ const Power = styled.p`
 
 const Count = styled.p``;
 
-const Product = ({ data }) => (
-  <Wrapper>
-    <ImageBox>
-      <Image src={data.slika} />
-      <Title>{data.ime}</Title>
-    </ImageBox>
-    <Info>
-      <Data>
-        <Power>10W</Power>
-        <Count>100X</Count>
-      </Data>
-      <Data>
-        <Power>15W</Power>
-        <Count>80X</Count>
-      </Data>
-      <Data>
-        <Power>30W</Power>
-        <Count>20X</Count>
-      </Data>
-      <Data />
-      <Data />
-      <Data />
-      <Data />
-    </Info>
-  </Wrapper>
-);
+const countByLumen = (stateLumen, itemLumen) =>
+  Math.round(stateLumen / itemLumen);
+
+const Product = ({ data }) => {
+  const { state } = useContext(ListContext);
+
+  const emptyField = data.types.length <= 7 ? 7 - data.types.length : 0;
+
+  return (
+    <Wrapper>
+      <ImageBox>
+        <Image src={data.slika} />
+        <Title>{data.ime}</Title>
+      </ImageBox>
+      <Info>
+        {data.types.map((el, i) => {
+          const count = countByLumen(state.selected.lumen, el.flux);
+          if (i < 7)
+            return (
+              <Data key={el.id}>
+                <Power>{`${el.snaga}W`}</Power>
+                <Count>{`${count}X`}</Count>
+              </Data>
+            );
+
+          return null;
+        })}
+        {[...Array(emptyField).keys()].map(el => (
+          <Data key={`empty-${el}`} />
+        ))}
+      </Info>
+    </Wrapper>
+  );
+};
 
 export default Product;
