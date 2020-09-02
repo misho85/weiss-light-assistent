@@ -33,11 +33,18 @@ const Box = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  ${p => p.theme.maxWidth.phone`
+    flex-direction: column;
+  `}
 `;
 
 const BoxLeft = styled.div``;
 
-const BoxRight = styled.div``;
+const BoxRight = styled.div`
+  ${p => p.theme.maxWidth.phone`
+    margin-right: 5em;
+  `}
+`;
 
 const InputBox = styled.div`
   display: flex;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useCombobox } from 'downshift';
+import items from '../../../data/luxItems';
 
 const SearchWrapper = styled.div`
   width: 100%;
@@ -62,45 +63,6 @@ const Item = styled.li`
   border-radius: 0.3em;
   padding-left: 1em;
 `;
-
-const items = [
-  {
-    label: 'pekara',
-    value: 300,
-  },
-  {
-    label: 'zubar',
-    value: 1000,
-  },
-  {
-    label: 'magacin',
-    value: 5000,
-  },
-  {
-    label: 'obucar',
-    value: 400,
-  },
-  {
-    label: 'stadion',
-    value: 50000,
-  },
-  {
-    label: 'market',
-    value: 10000,
-  },
-  {
-    label: 'picerija',
-    value: 600,
-  },
-  {
-    label: 'bioskop',
-    value: 8000,
-  },
-  {
-    label: 'frizer',
-    value: 4500,
-  },
-];
 
 const AutoComplete = ({ setSelectedItem }) => {
   const [inputItems, setInputItems] = useState(items);

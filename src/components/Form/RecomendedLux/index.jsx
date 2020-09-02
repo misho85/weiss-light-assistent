@@ -1,5 +1,6 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import styled from 'styled-components';
+import useOnClickOutside from '../../../utils/useOnClickOutside';
 import { MagnifyingGlass } from '../../../icons';
 import AutoComplete from './AutoComplete';
 
@@ -10,6 +11,11 @@ const Wrapper = styled.div`
   width: ${p => (p.active ? `14em` : `2.4em`)};
   border-radius: 0.4em;
   background-color: ${p => p.theme.colors.gray};
+  ${p =>
+    p.active &&
+    p.theme.maxWidth.phone`
+    margin-left: -11em;
+  `}
 `;
 
 const Search = styled.button`
@@ -32,9 +38,13 @@ const RecomendedLux = ({ setSelectedItem }) => {
 
   const toggleActive = () => setActive(!active);
 
+  const ref = useRef();
+
+  useOnClickOutside(ref, () => setActive(false));
+
   return (
-    <Wrapper active={active}>
-      <Search onClick={toggleActive}>
+    <Wrapper active={active} ref={ref}>
+      <Search type="button" onClick={toggleActive}>
         <MagnifyingGlass />
       </Search>
       {active && <AutoComplete setSelectedItem={setSelectedItem} />}

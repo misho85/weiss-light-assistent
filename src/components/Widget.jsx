@@ -10,15 +10,24 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  ${p => p.theme.maxWidth.xLarge`
+    flex-direction: column;
+  `}
+  ${p => p.theme.maxWidth.phone`
+    width: 100%;
+  `}
 `;
 
-const WidgetWrapper = styled.div``;
+const WidgetWrapper = styled.div`
+  ${p => p.theme.maxWidth.phone`
+    width: 100%;
+  `}
+`;
 
 const TitleBox = styled.div`
   text-align: end;
   padding-right: 10%;
   margin-bottom: 0.5em;
-  width: 50em;
 
   > span {
     font-size: 2em;
@@ -42,16 +51,23 @@ const Container = styled.div`
   background-color: ${p => p.theme.colors.grayLight};
   border-top: 0.5em solid ${p => p.theme.colors.blueLight};
   transition: all 0.2s ease-in-out;
+  ${p => p.theme.maxWidth.phone`
+    width: 100%;
+    height: auto;
+  `}
 `;
 
 const Box = styled.div`
-  width: 50em;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1.5em 4.5em;
+  ${p => p.theme.maxWidth.phone`
+    padding: 1em;
+  `}
 `;
 
 const Submit = styled.button`

@@ -9,6 +9,13 @@ import Product from './Product';
 const Wrapper = styled.div`
   margin-left: 2em;
   position: relative;
+  ${p => p.theme.maxWidth.xLarge`
+    margin-left: 0;
+    margin-top: 2em;
+  `}
+  ${p => p.theme.maxWidth.phone`
+    width: 100%;
+  `}
 `;
 
 const Title = styled.p`
@@ -30,6 +37,9 @@ const Box = styled.div`
   background-color: ${p => p.theme.colors.grayLight};
   border-top: 0.5em solid ${p => p.theme.colors.grayLight};
   overflow: auto;
+  ${p => p.theme.maxWidth.phone`
+    width: 100%;
+  `}
 `;
 
 const Close = styled.button`
@@ -37,6 +47,10 @@ const Close = styled.button`
   right: 0;
   width: 2.5em;
   height: 2.5em;
+  ${p => p.theme.maxWidth.phone`
+    right: unset;
+    left: 5%;
+  `}
 
   > svg {
     width: 2em;
