@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useCombobox } from 'downshift';
-import items from '../../../data/luxItems';
+import items from '../../data/luxItems';
 
 const SearchWrapper = styled.div`
   width: 100%;

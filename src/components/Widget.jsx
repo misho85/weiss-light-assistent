@@ -1,24 +1,31 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
 import List from './List';
-import Form from './Form';
+import CalcForm from './CalcForm';
+import ContactForm from './ContactForm';
 import Products from './Products';
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+const CalcWrapper = styled.div`
+  display: flex;
+  width: 100%;
+
+  /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
   ${p => p.theme.maxWidth.xLarge`
     flex-direction: column;
   `}
-  ${p => p.theme.maxWidth.phone`
-    width: 100%;
-  `}
 `;
 
 const WidgetWrapper = styled.div`
+  width: 50em;
   ${p => p.theme.maxWidth.phone`
     width: 100%;
   `}
@@ -43,18 +50,31 @@ const Name = styled.span`
 `;
 
 const Container = styled.div`
-  width: 50em;
-  height: 40em;
+  width: 100%;
+  height: ${p => (p.contact ? `auto` : `40em`)};
   display: flex;
   flex-direction: row;
   justify-content: center;
   background-color: ${p => p.theme.colors.grayLight};
-  border-top: 0.5em solid ${p => p.theme.colors.blueLight};
   transition: all 0.2s ease-in-out;
   ${p => p.theme.maxWidth.phone`
-    width: 100%;
     height: auto;
   `}
+
+  ${p =>
+    p.topBorder &&
+    css`
+      border-top: 0.5em solid ${p.theme.colors.blueLight};
+    `}
+`;
+
+const ContactTitle = styled.p`
+  text-align: end;
+  padding-right: 10%;
+  margin-bottom: 0.25em;
+  font-size: 2em;
+  text-transform: uppercase;
+  margin-top: 1em;
 `;
 
 const Box = styled.div`
@@ -89,22 +109,35 @@ const Widget = () => {
 
   return (
     <Wrapper>
+      <CalcWrapper>
+        <WidgetWrapper>
+          <TitleBox>
+            <Brand>Weiss light </Brand>
+            <Name>Assistent</Name>
+          </TitleBox>
+          <Container topBorder>
+            <Box>
+              <List />
+              <CalcForm />
+              <Submit type="submit" form="calc-form">
+                Obračunaj
+              </Submit>
+            </Box>
+          </Container>
+        </WidgetWrapper>
+        {showResults && <Products />}
+      </CalcWrapper>
       <WidgetWrapper>
-        <TitleBox>
-          <Brand>Weiss light </Brand>
-          <Name>Assistent</Name>
-        </TitleBox>
-        <Container>
+        <ContactTitle>Kontakt</ContactTitle>
+        <Container contact>
           <Box>
-            <List />
-            <Form />
-            <Submit type="submit" form="calc-form">
-              Obračunaj
+            <ContactForm />
+            <Submit type="submit" form="contact-form">
+              Pošalji upit
             </Submit>
           </Box>
         </Container>
       </WidgetWrapper>
-      {showResults && <Products />}
     </Wrapper>
   );
 };
