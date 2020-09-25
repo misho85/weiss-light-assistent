@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { ListContext } from '../context/ListContext';
 import Input from './Input';
+import productData from '../data/products';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -66,8 +67,35 @@ const validationSchema = yup.object().shape({
   message: yup.string().required('Message is required!'),
 });
 
+const countByLumen = (stateLumen, itemLumen) =>
+  Math.round(stateLumen / itemLumen);
+
 const ContactForm = () => {
   const { state } = useContext(ListContext);
+
+  const assistentData = state.items.map(el => {
+    const lumen = el.kvadratura * el.lux;
+
+    const products = productData.map(el => {
+      const types = el.types.map(el => {
+        const count = countByLumen(lumen, el.flux);
+        return {
+          snaga: el.snaga,
+          count,
+        };
+      });
+
+      return {
+        name: el.ime,
+        types,
+      };
+    });
+
+    return {
+      ...el,
+      products,
+    };
+  });
 
   const methods = useForm({
     mode: 'onBlur',
@@ -75,7 +103,7 @@ const ContactForm = () => {
   });
 
   const onSubmit = data => {
-    console.log({ ...data, assistentData: state.items });
+    console.log({ ...data, assistentData });
 
     methods.reset();
   };
