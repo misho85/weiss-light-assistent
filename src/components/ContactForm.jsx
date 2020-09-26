@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
@@ -7,6 +8,9 @@ import * as yup from 'yup';
 import { ListContext } from '../context/ListContext';
 import Input from './Input';
 import productData from '../data/products';
+
+const API_URL = `https://www.weisslight.eu/x/wp-json/weisslight-assistant/v1/create-email`;
+const TOKEN = `Mie9Xiehoo=z3iK~aiPh4ooL4aekai3ut9`;
 
 const FormWrapper = styled.form`
   display: flex;
@@ -73,37 +77,52 @@ const countByLumen = (stateLumen, itemLumen) =>
 const ContactForm = () => {
   const { state } = useContext(ListContext);
 
-  const assistentData = state.items.map(el => {
-    const lumen = el.kvadratura * el.lux;
-
-    const products = productData.map(el => {
-      const types = el.types.map(el => {
-        const count = countByLumen(lumen, el.flux);
-        return {
-          snaga: el.snaga,
-          count,
-        };
-      });
-
-      return {
-        name: el.ime,
-        types,
-      };
-    });
-
-    return {
-      ...el,
-      products,
-    };
-  });
-
   const methods = useForm({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = data => {
-    console.log({ ...data, assistentData });
+    const assistentData = state.items.map(el => {
+      const lumen = el.kvadratura * el.lux;
+
+      const products = productData.map(el => {
+        const types = el.types.map(el => {
+          const count = countByLumen(lumen, el.flux);
+          return {
+            snaga: el.snaga,
+            count,
+          };
+        });
+
+        return {
+          name: el.ime,
+          types,
+        };
+      });
+
+      return {
+        ...el,
+        products,
+      };
+    });
+
+    const allData = { ...data, assistentData };
+
+    const postData = async () => {
+      try {
+        const res = await axios.post(
+          API_URL,
+          { ...allData },
+          { params: { token: TOKEN } }
+        );
+        console.log('👉 Returned data:', res.data);
+      } catch (e) {
+        console.error(`😱 Axios request failed: ${e.response.status}`);
+      }
+    };
+
+    postData();
 
     methods.reset();
   };
