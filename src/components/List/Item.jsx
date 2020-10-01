@@ -8,21 +8,25 @@ const wrapperCSS = css`
   height: 3.4em;
   border-radius: 0.5em;
   background-color: ${p =>
-    p.selected ? p.theme.colors.pink : p.theme.colors.gray};
+    p.selected ? p.theme.colors.blueLight : p.theme.colors.gray};
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
   font-size: 1.2em;
   text-align: center;
+  ${p =>
+    p.selected &&
+    css`
+      box-shadow: 0 0 0 3px ${p.theme.colors.blue};
+    `};
 `;
 
 const WrapperButton = styled.button`
   ${wrapperCSS}
 
   &:hover {
-    background-color: ${p =>
-      p.selected ? p.theme.colors.pink : p.theme.colors.blueLight};
+    background-color: ${p => p.theme.colors.blueLight};
   }
 `;
 
@@ -32,7 +36,7 @@ const Input = styled.input`
   appearance: none;
 
   &:focus {
-    box-shadow: 0 0 0 3px ${p => p.theme.colors.pink};
+    box-shadow: 0 0 0 3px ${p => p.theme.colors.blue};
   }
 `;
 
