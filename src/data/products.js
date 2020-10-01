@@ -4,7 +4,7 @@ import ledLane from '../assets/images/WL-LED-LANE.png';
 import reflektor from '../assets/images/WL-LED-REFLEKTOR.png';
 import zvono from '../assets/images/WLZ-KLASIK.png';
 
-// broj tipova ogranicen na 7
+// broj tipova ogranicen na 5
 
 export default [
   {
@@ -42,7 +42,7 @@ export default [
   },
   {
     id: 2,
-    ime: `WL LED INDUSTRIJSKO ZVONO / KLASIK`,
+    ime: `WL LED IND. ZVONO / KLASIK`,
     snaga: `90W/110W/130W`,
     boja: `2700K-6500K`,
     flux: `730Lm/8760Lm/10300Lm`,

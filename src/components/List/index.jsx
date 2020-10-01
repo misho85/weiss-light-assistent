@@ -1,7 +1,7 @@
 import React, { useState, useContext, memo } from 'react';
 import styled, { css } from 'styled-components';
 import Tooltip from '@reach/tooltip';
-import { Plus, Bin, Pen } from '../../icons';
+import { Plus, Bin, Pen } from '../../assets/icons';
 import { ListContext } from '../../context/ListContext';
 import Item from './Item';
 

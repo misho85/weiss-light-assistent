@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Tooltip from '@reach/tooltip';
 import { ResultsContext } from '../../context/ResultsContext';
-import { Plus } from '../../icons';
+import { Plus } from '../../assets/icons';
 import data from '../../data/products';
 import Product from './Product';
 
 const Wrapper = styled.div`
   margin-left: 2em;
   position: relative;
-  ${p => p.theme.maxWidth.xLarge`
+  ${p => p.theme.maxWidth.large`
     margin-left: 0;
     margin-top: 2em;
   `}
@@ -27,7 +27,7 @@ const Title = styled.p`
 `;
 
 const Box = styled.div`
-  width: 50em;
+  width: 40em;
   height: 40em;
   display: flex;
   flex-direction: column;
@@ -37,8 +37,12 @@ const Box = styled.div`
   background-color: ${p => p.theme.colors.grayLight};
   border-top: 0.5em solid ${p => p.theme.colors.grayLight};
   overflow: auto;
+  ${p => p.theme.maxWidth.large`
+    width: 50em;
+  `}
   ${p => p.theme.maxWidth.phone`
     width: 100%;
+    height: 80em;
   `}
 `;
 

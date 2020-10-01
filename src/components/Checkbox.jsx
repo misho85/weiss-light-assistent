@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { ListContext } from '../context/ListContext';
-import { Check } from '../icons';
+import { Check } from '../assets/icons';
 
 const Wrapper = styled.div``;
 

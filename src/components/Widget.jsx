@@ -19,7 +19,7 @@ const CalcWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  ${p => p.theme.maxWidth.xLarge`
+  ${p => p.theme.maxWidth.large`
     flex-direction: column;
   `}
 `;
