@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
 import List from './List';
-import CalcForm from './CalcForm';
+// import CalcForm from './CalcForm';
+import CalcForm from './CalcFormV2';
 import ContactForm from './ContactForm';
 import Products from './Products';
 
