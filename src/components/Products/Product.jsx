@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { ListContext } from '../../context/ListContext';
-import { ImgOrnamentRightMobile } from '../../assets/graphics';
+import {
+  ImgOrnamentRightMobile,
+  ImgOrnamentTop,
+  ImgOrnamentBottom,
+} from '../../assets/graphics';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -13,6 +17,36 @@ const Wrapper = styled.div`
   margin-bottom: 1.1em;
   ${p => p.theme.maxWidth.phone`
     height: 14em;
+  `}
+`;
+
+const OrnamentTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  > svg {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  ${p => p.theme.maxWidth.phone`
+    display: none;
+  `}
+`;
+
+const OrnamentBottom = styled.div`
+  position: absolute;
+  bottom: -3px;
+  right: 1px;
+
+  > svg {
+    width: 2em;
+    height: 4em;
+  }
+
+  ${p => p.theme.maxWidth.phone`
+    display: none;  
   `}
 `;
 
@@ -152,6 +186,12 @@ const Product = ({ data }) => {
         <OrnamentMobileLeft>
           <ImgOrnamentRightMobile />
         </OrnamentMobileLeft>
+        <OrnamentBottom>
+          <ImgOrnamentBottom />
+        </OrnamentBottom>
+        <OrnamentTop>
+          <ImgOrnamentTop />
+        </OrnamentTop>
         <Image src={data.slika} />
         <Title>{data.ime}</Title>
       </ImageBox>
