@@ -17,6 +17,7 @@ export default [
     ugao: `110`,
     vek: `30 000 sati`,
     slika: sijalica,
+    url: `https://www.weisslight.eu/proizvodi/wl-led-sijalice.php`,
     types: [
       {
         id: 1,
@@ -50,6 +51,7 @@ export default [
     ugao: `30-120`,
     vek: `30 000 sati`,
     slika: zvono,
+    url: `https://www.weisslight.eu/proizvodi/wl-led-industrijska-zvona.php`,
     types: [
       {
         id: 1,
@@ -78,6 +80,7 @@ export default [
     ugao: `150`,
     vek: `30 000 sati`,
     slika: ledCev,
+    url: `https://www.weisslight.eu/proizvodi/wl-led-cevi.php`,
     types: [
       {
         id: 1,
@@ -116,6 +119,7 @@ export default [
     ugao: `110`,
     vek: `30 000 sati`,
     slika: reflektor,
+    url: `https://www.weisslight.eu/proizvodi/wl-led-reflektori.php`,
     types: [
       {
         id: 1,
@@ -154,6 +158,7 @@ export default [
     ugao: `60-120`,
     vek: `30 000 sati`,
     slika: ledLane,
+    url: `https://www.weisslight.eu/proizvodi/wl-led-office-light.php`,
     types: [
       {
         id: 1,

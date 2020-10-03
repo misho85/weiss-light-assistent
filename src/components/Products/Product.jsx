@@ -92,9 +92,14 @@ const ImageBox = styled.div`
   background-color: ${p => p.theme.colors.gray};
   border-radius: 1em;
   overflow: hidden;
+  transition: all 0.2s ease-in-out;
   ${p => p.theme.maxWidth.phone`
     width: 60%;
   `}
+
+  &:hover {
+    background-color: ${p => p.theme.colors.blueLight};
+  }
 `;
 
 const Image = styled.img`
@@ -179,22 +184,24 @@ const Product = ({ data }) => {
 
   return (
     <Wrapper>
-      <ImageBox>
-        <OrnamentMobileRight>
-          <ImgOrnamentRightMobile />
-        </OrnamentMobileRight>
-        <OrnamentMobileLeft>
-          <ImgOrnamentRightMobile />
-        </OrnamentMobileLeft>
-        <OrnamentBottom>
-          <ImgOrnamentBottom />
-        </OrnamentBottom>
-        <OrnamentTop>
-          <ImgOrnamentTop />
-        </OrnamentTop>
-        <Image src={data.slika} />
-        <Title>{data.ime}</Title>
-      </ImageBox>
+      <a href={data.url} rel="noreferrer noopener" target="_blank">
+        <ImageBox>
+          <OrnamentMobileRight>
+            <ImgOrnamentRightMobile />
+          </OrnamentMobileRight>
+          <OrnamentMobileLeft>
+            <ImgOrnamentRightMobile />
+          </OrnamentMobileLeft>
+          <OrnamentBottom>
+            <ImgOrnamentBottom />
+          </OrnamentBottom>
+          <OrnamentTop>
+            <ImgOrnamentTop />
+          </OrnamentTop>
+          <Image src={data.slika} />
+          <Title>{data.ime}</Title>
+        </ImageBox>
+      </a>
       <Info>
         {data.types.map((el, i) => {
           const count = countByLumen(state.selected.lumen, el.flux);
