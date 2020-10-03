@@ -18,6 +18,10 @@ const Wrapper = styled.div`
 
   > a {
     height: 100%;
+    width: 12em;
+    ${p => p.theme.maxWidth.phone`
+      width: 60%;
+    `}
   }
 
   ${p => p.theme.maxWidth.phone`
@@ -89,7 +93,7 @@ const OrnamentMobileLeft = styled.div`
 const ImageBox = styled.div`
   position: relative;
   height: 100%;
-  width: 12em;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,9 +102,6 @@ const ImageBox = styled.div`
   border-radius: 1em;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
-  ${p => p.theme.maxWidth.phone`
-    width: 60%;
-  `}
 
   &:hover {
     background-color: ${p => p.theme.colors.blueLight};

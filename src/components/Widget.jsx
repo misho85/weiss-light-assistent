@@ -91,6 +91,7 @@ const Box = styled.div`
   padding: 1.5em 4.5em;
   ${p => p.theme.maxWidth.phone`
     padding: 1em;
+    width: 100%;
   `}
 `;
 
