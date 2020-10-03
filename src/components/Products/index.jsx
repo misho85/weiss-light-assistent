@@ -42,8 +42,21 @@ const Box = styled.div`
   `}
   ${p => p.theme.maxWidth.phone`
     width: 100%;
-    height: 80em;
+    height: 61.5em;
   `}
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${p => p.theme.colors.blue};
+    border-radius: 3px;
+
+    &:hover {
+      background: ${p => p.theme.colors.blueLight};
+    }
+  }
 `;
 
 const Close = styled.button`

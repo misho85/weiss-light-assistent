@@ -9,12 +9,12 @@ import {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 6.5em;
+  height: 8.7em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.1em;
+  margin-bottom: 1em;
   ${p => p.theme.maxWidth.phone`
     height: 14em;
   `}
@@ -108,7 +108,7 @@ const Image = styled.img`
 const Title = styled.p`
   width: 8em;
   margin-bottom: 1em;
-  font-size: 0.65em;
+  font-size: 0.8em;
   font-weight: bold;
   text-align: center;
   ${p => p.theme.maxWidth.phone`
