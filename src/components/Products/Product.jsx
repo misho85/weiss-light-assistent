@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1em;
+
+  > a {
+    height: 100%;
+  }
+
   ${p => p.theme.maxWidth.phone`
     height: 14em;
   `}

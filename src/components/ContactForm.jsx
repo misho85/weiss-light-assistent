@@ -29,7 +29,7 @@ const Container = styled.div`
   margin-top: 2.5em;
 `;
 
-const NameBox = styled.div`
+const DoubleBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -49,26 +49,32 @@ const InputBox = styled.div`
   `}
 `;
 
+const InfoBox = styled.div`
+  margin: 0 0.5em 1em;
+  font-size: 1.2em;
+  width: 75%;
+`;
+
 const validationSchema = yup.object().shape({
   firstName: yup
     .string()
     .matches(/^([\p{L}\s]+)$/u, {
-      message: 'Name is not valid!',
+      message: 'Ime nije validno!',
       excludeEmptyString: true,
     })
-    .required('Name is required!'),
+    .required('Ime je neophodno!'),
   lastName: yup
     .string()
     .matches(/^([\p{L}\s]+)$/u, {
-      message: 'Last name is not valid!',
+      message: 'Prezime nije validno!',
       excludeEmptyString: true,
     })
-    .required('Last name is required!'),
+    .required('Prezime je neophodno!'),
   email: yup
     .string()
-    .email('Email is not valid!')
-    .required('Email is required!'),
-  message: yup.string().required('Message is required!'),
+    .email('Email nije validan!')
+    .required('Email je neophodan!'),
+  // message: yup.string().required('Poruka je neophodna!'),
 });
 
 const countByLumen = (stateLumen, itemLumen) =>
@@ -131,13 +137,19 @@ const ContactForm = () => {
     <FormProvider {...methods}>
       <FormWrapper onSubmit={methods.handleSubmit(onSubmit)} id="contact-form">
         <Container>
-          <NameBox>
+          <InfoBox>
+            <p>
+              Da biste dobili cenu za ponudjenu rasvetu, unesite podatke i
+              pošaljite upit
+            </p>
+          </InfoBox>
+          <DoubleBox>
             <InputBox>
               <Input
                 contact
                 type="text"
                 name="firstName"
-                placeholder="Name"
+                placeholder="Ime"
                 autoComplete="given-name"
                 required
               />
@@ -147,25 +159,39 @@ const ContactForm = () => {
                 contact
                 type="text"
                 name="lastName"
-                placeholder="Last Name"
+                placeholder="Prezime"
                 autoComplete="family-name"
                 required
               />
             </InputBox>
-          </NameBox>
-          <Input
-            contact
-            type="text"
-            name="email"
-            placeholder="Email"
-            autoComplete="email"
-            required
-          />
+          </DoubleBox>
+          <DoubleBox>
+            <InputBox>
+              <Input
+                contact
+                type="text"
+                name="email"
+                placeholder="Email"
+                autoComplete="email"
+                required
+              />
+            </InputBox>
+            <InputBox>
+              <Input
+                contact
+                type="text"
+                name="company"
+                placeholder="Naziv firme"
+                autoComplete="organization"
+                // required
+              />
+            </InputBox>
+          </DoubleBox>
           <Input
             contact
             textarea
             name="message"
-            placeholder="Message"
+            placeholder="Poruka"
             rows={6}
             required
           />

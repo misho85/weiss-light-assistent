@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
+import { Logo } from '../assets/graphics';
 import List from './List';
 // import CalcForm from './CalcForm';
 import CalcForm from './CalcFormV2';
@@ -26,7 +27,11 @@ const CalcWrapper = styled.div`
 `;
 
 const WidgetWrapper = styled.div`
-  width: 50em;
+  width: ${p => (p.contact ? `100%` : `50em`)};
+  margin-right: auto;
+  ${p => p.theme.maxWidth.large`
+    margin-right: unset;
+  `}
   ${p => p.theme.maxWidth.phone`
     width: 100%;
   `}
@@ -53,6 +58,7 @@ const Name = styled.span`
 const Container = styled.div`
   width: 100%;
   height: ${p => (p.contact ? `auto` : `40em`)};
+  margin-top: ${p => (p.contact ? `1em` : 0)};
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,19 +73,16 @@ const Container = styled.div`
     css`
       border-top: 0.5em solid ${p.theme.colors.blueLight};
     `}
-`;
 
-const ContactTitle = styled.p`
-  text-align: end;
-  padding-right: 10%;
-  margin-bottom: 0.25em;
-  font-size: 2em;
-  text-transform: uppercase;
-  margin-top: 1em;
+  ${p =>
+    p.contact &&
+    p.theme.maxWidth.large`
+      flex-direction: column;
+  `}
 `;
 
 const Box = styled.div`
-  width: 100%;
+  width: ${p => (p.contact ? `50em` : `100%`)};
   height: auto;
   display: flex;
   flex-direction: column;
@@ -88,6 +91,25 @@ const Box = styled.div`
   padding: 1.5em 4.5em;
   ${p => p.theme.maxWidth.phone`
     padding: 1em;
+  `}
+`;
+
+const LogoContainer = styled.div`
+  width: 40em;
+  margin-left: 2em;
+  display: flex;
+  background-color: ${p => p.theme.colors.grayLight};
+
+  > svg {
+    margin: auto;
+    width: 18em;
+    height: 6em;
+  }
+
+  ${p => p.theme.maxWidth.large`
+    margin-left: 0;
+    width: 100%;
+    padding: 7em 0;
   `}
 `;
 
@@ -128,15 +150,17 @@ const Widget = () => {
         </WidgetWrapper>
         {showResults && <Products />}
       </CalcWrapper>
-      <WidgetWrapper>
-        <ContactTitle>Kontakt</ContactTitle>
+      <WidgetWrapper contact>
         <Container contact>
-          <Box>
+          <Box contact>
             <ContactForm />
             <Submit type="submit" form="contact-form">
               Pošalji upit
             </Submit>
           </Box>
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
         </Container>
       </WidgetWrapper>
     </Wrapper>

@@ -1,7 +1,5 @@
 import React, { memo } from 'react';
 
-// ImgOrnamentBottom
-
 const ImgOrnamentBottom = props => (
   <svg width="1em" height="2em" viewBox="0 0 10 20" {...props}>
     <defs>
