@@ -179,6 +179,10 @@ const Search = styled.button`
   }
 `;
 
+const alphaSort = (list, property) => {
+  return list.sort((a, b) => (a[property] > b[property] ? 1 : -1));
+};
+
 const validationSchema = yup.object().shape({
   kvadratura: yup.number().min(1).required('Kvadratura is required!'),
   visina: yup.number().min(1).required('Visina is required!'),
@@ -242,7 +246,7 @@ const CalcForm = () => {
               <p>Predlozi</p>
             </SelectHeader>
             <LuxList>
-              {items.map(el => (
+              {alphaSort(items, 'label').map(el => (
                 <LuxItem
                   key={el.label}
                   type="button"
