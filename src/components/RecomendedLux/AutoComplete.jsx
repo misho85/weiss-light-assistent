@@ -49,7 +49,7 @@ const Dropdown = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.pink};
+    background-color: ${p => p.theme.colors.blue};
     border-radius: 3px;
 
     &:hover {

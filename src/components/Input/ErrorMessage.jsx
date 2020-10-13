@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const Message = styled.small`
   position: absolute;
   bottom: -1.5em;
-  color: ${p => p.theme.colors.pink};
+  color: ${p => p.theme.colors.blue};
   font-size: 0.8em;
 `;
 

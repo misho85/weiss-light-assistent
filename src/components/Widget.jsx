@@ -124,7 +124,7 @@ const Submit = styled.button`
   transition: all 200ms;
 
   &:hover {
-    background-color: ${p => p.theme.colors.pink};
+    background-color: ${p => p.theme.colors.blue};
   }
 `;
 
