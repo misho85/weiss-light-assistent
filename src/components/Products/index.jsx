@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Tooltip from '@reach/tooltip';
 import { ResultsContext } from '../../context/ResultsContext';
+import { ListContext } from '../../context/ListContext';
 import { Plus } from '../../assets/icons';
 import data from '../../data/products';
 import Product from './Product';
@@ -79,8 +80,11 @@ const Close = styled.button`
 
 const Products = () => {
   const { setShowResults } = useContext(ResultsContext);
+  const { state } = useContext(ListContext);
 
   const closeList = () => setShowResults(false);
+
+  const gVis = state.selected.visina;
 
   return (
     <Wrapper>
@@ -91,9 +95,12 @@ const Products = () => {
       </Tooltip>
       <Title>Potrebna rasveta</Title>
       <Box>
-        {data.map(el => (
-          <Product key={el.id} data={el} />
-        ))}
+        {data.map(el => {
+          if (el.visina[0] <= gVis && gVis <= el.visina[1]) {
+            return <Product key={el.id} data={el} />;
+          }
+          return null;
+        })}
       </Box>
     </Wrapper>
   );
