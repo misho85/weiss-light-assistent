@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
 import { Logo } from '../assets/graphics';
+import { RoundCheck } from '../assets/icons';
 import List from './List';
 // import CalcForm from './CalcForm';
 import CalcForm from './CalcFormV2';
@@ -122,14 +123,25 @@ const Submit = styled.button`
   padding: 3% 5%;
   margin: auto;
   transition: all 200ms;
+  position: relative;
 
   &:hover {
     background-color: ${p => p.theme.colors.blue};
+  }
+
+  > svg {
+    position: absolute;
+    bottom: -0.5em;
+    right: -1.5em;
+    width: 2.5em;
+    height: 2.5em;
   }
 `;
 
 const Widget = () => {
   const { showResults } = useContext(ResultsContext);
+
+  const [submited, setSubmited] = useState(false);
 
   return (
     <Wrapper>
@@ -137,7 +149,7 @@ const Widget = () => {
         <WidgetWrapper>
           <TitleBox>
             <Brand>Weiss light </Brand>
-            <Name>Assistent</Name>
+            <Name>Assistant</Name>
           </TitleBox>
           <Container topBorder>
             <Box>
@@ -154,9 +166,9 @@ const Widget = () => {
       <WidgetWrapper contact>
         <Container contact>
           <Box contact>
-            <ContactForm />
+            <ContactForm setSubmited={setSubmited} />
             <Submit type="submit" form="contact-form">
-              Pošalji upit
+              Pošalji upit {submited && <RoundCheck />}
             </Submit>
           </Box>
           <LogoContainer>

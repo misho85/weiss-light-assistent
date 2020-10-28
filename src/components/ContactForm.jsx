@@ -80,7 +80,7 @@ const validationSchema = yup.object().shape({
 const countByLumen = (stateLumen, itemLumen) =>
   Math.round(stateLumen / itemLumen);
 
-const ContactForm = () => {
+const ContactForm = ({ setSubmited }) => {
   const { state } = useContext(ListContext);
 
   const methods = useForm({
@@ -124,13 +124,14 @@ const ContactForm = () => {
         );
         console.log('👉 Returned data:', res.data);
       } catch (e) {
-        console.error(`😱 Axios request failed: ${e.response.status}`);
+        console.error(`😱 Axios request failed: ${e.response}`);
+        // console.error(`😱 Axios request failed: ${e.response.status}`);
       }
     };
 
     postData();
-
     methods.reset();
+    setSubmited(true);
   };
 
   return (
