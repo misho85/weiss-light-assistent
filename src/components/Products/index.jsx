@@ -32,7 +32,7 @@ const Box = styled.div`
   height: 40em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 1em 1.5em 0 1.5em;
   background-color: ${p => p.theme.colors.grayLight};
