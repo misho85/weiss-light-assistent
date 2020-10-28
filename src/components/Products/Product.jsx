@@ -109,6 +109,7 @@ const ImageBox = styled.div`
 `;
 
 const Image = styled.img`
+  margin-top: 1em;
   width: 7em;
   ${p => p.theme.maxWidth.phone`
     width: 15em;

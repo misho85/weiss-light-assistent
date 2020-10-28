@@ -84,7 +84,7 @@ const LuxItem = styled.button`
   border-bottom: 1px solid #fff;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 1.2em;
   font-weight: 600;
 
