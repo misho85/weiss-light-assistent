@@ -7,8 +7,7 @@ import zvono from '../assets/images/zvono.png';
 
 // broj tipova ogranicen na 5
 
-//TODO: filter po visini
-export default [
+const products = [
   {
     id: 1,
     ime: `FELIX PRO`,
@@ -215,3 +214,5 @@ export default [
     ],
   },
 ];
+
+export default products;

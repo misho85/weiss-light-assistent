@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ListContext } from '../context/ListContext';
 import Input from './Input';

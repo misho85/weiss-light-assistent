@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
 
-export default (ref, handler, active = true) => {
+const useOnClickOutside = (ref, handler, active = true) => {
   const listener = useCallback(
     e => {
       if (ref.current && !ref.current.contains(e.target)) {
@@ -25,3 +25,5 @@ export default (ref, handler, active = true) => {
     };
   }, [listener, active]);
 };
+
+export default useOnClickOutside;

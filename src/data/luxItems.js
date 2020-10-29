@@ -1,4 +1,4 @@
-export default [
+const luxItems = [
   {
     label: 'pekara - kuhinja',
     value: 500,
@@ -56,3 +56,5 @@ export default [
     value: 150,
   },
 ];
+
+export default luxItems;
