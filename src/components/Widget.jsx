@@ -149,7 +149,7 @@ const Widget = () => {
         <WidgetWrapper>
           <TitleBox>
             <Brand>Weiss light </Brand>
-            <Name>Assistant</Name>
+            <Name>Calculator</Name>
           </TitleBox>
           <Container topBorder>
             <Box>
