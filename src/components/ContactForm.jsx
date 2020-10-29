@@ -189,7 +189,7 @@ const ContactForm = ({ setSubmited }) => {
             name="message"
             placeholder="Poruka"
             rows={6}
-            required
+            // required
           />
         </Container>
       </FormWrapper>
