@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
 import { Logo } from '../assets/graphics';
@@ -142,14 +142,11 @@ const Widget = () => {
 
   const [submited, setSubmited] = useState(null);
 
-  const resetSubmit = useCallback(() => setSubmited(null), [setSubmited]);
-
   useEffect(() => {
-    console.log('submited', submited);
-    let timer = setTimeout(resetSubmit, 4000);
+    let timer = setTimeout(() => setSubmited(null), 4000);
 
     return () => clearTimeout(timer);
-  }, [resetSubmit, submited]);
+  }, [submited]);
 
   return (
     <Wrapper>
