@@ -118,15 +118,15 @@ const ContactForm = ({ setSubmited }) => {
       try {
         const res = await axios.post(API_URL, { ...allData });
         console.log('👉 Returned data:', res.data);
+        setSubmited('success');
       } catch (e) {
-        console.error(`😱 Axios request failed: ${e.response}`);
-        // console.error(`😱 Axios request failed: ${e.response.status}`);
+        console.error(`😱 Axios request failed: ${e.response.status}`);
+        setSubmited('error');
       }
     };
 
     postData();
     methods.reset();
-    setSubmited(true);
   };
 
   return (

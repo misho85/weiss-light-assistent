@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import { ResultsContext } from '../context/ResultsContext';
 import { Logo } from '../assets/graphics';
-import { RoundCheck } from '../assets/icons';
+import { RoundCheck, RoundError } from '../assets/icons';
 import List from './List';
-// import CalcForm from './CalcForm';
 import CalcForm from './CalcFormV2';
 import ContactForm from './ContactForm';
 import Products from './Products';
@@ -141,7 +140,16 @@ const Submit = styled.button`
 const Widget = () => {
   const { showResults } = useContext(ResultsContext);
 
-  const [submited, setSubmited] = useState(false);
+  const [submited, setSubmited] = useState(null);
+
+  const resetSubmit = useCallback(() => setSubmited(null), [setSubmited]);
+
+  useEffect(() => {
+    console.log('submited', submited);
+    let timer = setTimeout(resetSubmit, 4000);
+
+    return () => clearTimeout(timer);
+  }, [resetSubmit, submited]);
 
   return (
     <Wrapper>
@@ -168,7 +176,12 @@ const Widget = () => {
           <Box contact>
             <ContactForm setSubmited={setSubmited} />
             <Submit type="submit" form="contact-form">
-              Pošalji upit {submited && <RoundCheck />}
+              Pošalji upit
+              {submited === 'success' ? (
+                <RoundCheck />
+              ) : submited === 'error' ? (
+                <RoundError />
+              ) : null}
             </Submit>
           </Box>
           <LogoContainer>
