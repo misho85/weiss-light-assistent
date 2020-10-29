@@ -277,7 +277,7 @@ const CalcForm = () => {
             <InputBox>
               <p>Visina</p>
               <div>
-                <Input type="number" name="visina" required />
+                <Input type="number" name="visina" min="4" max="40" required />
                 <span>m</span>
               </div>
             </InputBox>

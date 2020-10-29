@@ -72,6 +72,7 @@ const Input = ({
   disabled = false,
   rows = 10,
   contact = false,
+  ...props
 }) => {
   const { register, errors, formState } = useFormContext();
 
@@ -91,6 +92,7 @@ const Input = ({
             autoComplete={autoComplete}
             disabled={disabled}
             ref={register({ required })}
+            {...props}
           />
           {contact &&
             required &&
