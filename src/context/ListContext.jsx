@@ -5,7 +5,7 @@ const initialState = {
   items: [
     {
       id: Date.now(),
-      label: 'Novi Objekat',
+      label: 'Prostorija 1',
       kvadratura: 500,
       visina: 10,
       lux: 350,
@@ -15,7 +15,7 @@ const initialState = {
   ],
   selected: {
     id: Date.now(),
-    label: 'Novi Objekat',
+    label: 'Prostorija 1',
     kvadratura: 500,
     visina: 10,
     lux: 350,
