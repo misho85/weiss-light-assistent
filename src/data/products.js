@@ -19,7 +19,7 @@ export default [
     ugao: `/`,
     vek: `30 000 sati`,
     slika: felix,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-sijalice.php`,
+    url: `https://www.weisslight.eu/proizvodi/felix-pro/`,
     visina: [5, 30],
     types: [
       {
@@ -59,7 +59,7 @@ export default [
     ugao: `30-120`,
     vek: `30 000 sati`,
     slika: zvono,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-industrijska-zvona.php`,
+    url: `https://www.weisslight.eu/proizvodi/wl-industrijsko-zvono/`,
     visina: [5, 12],
     types: [
       {
@@ -89,7 +89,7 @@ export default [
     ugao: `/`,
     vek: `30 000 sati`,
     slika: atria,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-sijalice.php`,
+    url: `https://www.weisslight.eu/proizvodi/atria-pro/`,
     visina: [6, 30],
     types: [
       {
@@ -124,7 +124,7 @@ export default [
     ugao: `/`,
     vek: `30 000 sati`,
     slika: freja,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-reflektori.php`,
+    url: `https://www.weisslight.eu/proizvodi/freja-pro/`,
     visina: [4, 8],
     types: [
       {
@@ -149,7 +149,7 @@ export default [
     ugao: `/`,
     vek: `30 000 sati`,
     slika: samson,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-sijalice.php`,
+    url: `https://www.weisslight.eu/proizvodi/samson-pro/`,
     visina: [10, 40],
     types: [
       {
@@ -184,7 +184,7 @@ export default [
     ugao: `/`,
     vek: `10000 sati`,
     slika: elight,
-    url: `https://www.weisslight.eu/proizvodi/wl-led-sijalice.php`,
+    url: `https://www.weisslight.eu/proizvodi/reflektor-e-light/`,
     visina: [4, 6],
     types: [
       {

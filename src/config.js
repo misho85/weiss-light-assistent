@@ -1,6 +1,6 @@
 const base = {
   name: `Weiss Light`, // Site name.
-  title: `Weiss Light Assistant`, // Site title.
+  title: `Weiss Light Calculator`, // Site title.
   url: `https://www.weisslight.eu/`, // Domain of your website.
 };
 
