@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { GlobalStyle } from './styles';
 import { ListProvider } from './context/ListContext';
 import { ResultsProvider } from './context/ResultsContext';
+import SEO from './components/SEO';
 import Widget from './components/Widget';
 import { PageOrnament } from './assets/graphics';
 
@@ -37,6 +38,7 @@ const Ornament = styled.div`
 function App() {
   return (
     <Wrapper>
+      <SEO />
       <GlobalStyle />
       <ListProvider>
         <ResultsProvider>

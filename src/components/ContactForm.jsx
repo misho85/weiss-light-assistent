@@ -9,8 +9,7 @@ import { ListContext } from '../context/ListContext';
 import Input from './Input';
 import productData from '../data/products';
 
-const API_URL = `https://www.weisslight.eu/x/wp-json/weisslight-assistant/v1/create-email`;
-const TOKEN = `Mie9Xiehoo=z3iK~aiPh4ooL4aekai3ut9`;
+const API_URL = `https://www.weisslight.eu/wp-json/weisslight-assistant/v1/create-email`;
 
 const FormWrapper = styled.form`
   display: flex;
@@ -117,11 +116,7 @@ const ContactForm = ({ setSubmited }) => {
 
     const postData = async () => {
       try {
-        const res = await axios.post(
-          API_URL,
-          { ...allData },
-          { params: { token: TOKEN } }
-        );
+        const res = await axios.post(API_URL, { ...allData });
         console.log('👉 Returned data:', res.data);
       } catch (e) {
         console.error(`😱 Axios request failed: ${e.response}`);
