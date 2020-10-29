@@ -23,5 +23,5 @@ module.exports = {
 
   keywords: `LED rasveta,asistent,weiss light,lumen,lux`,
 
-  pathname: `assistant`,
+  pathname: `calculator`,
 };
