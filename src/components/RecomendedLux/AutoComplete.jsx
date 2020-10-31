@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useCombobox } from 'downshift';
-import items from '../../data/luxItems';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+import items from '~data/luxItems';
 
 const SearchWrapper = styled.div`
   width: 100%;
@@ -109,7 +111,7 @@ const AutoComplete = ({ setSelectedItem }) => {
             {inputItems.map((item, index) => (
               <Item
                 {...getItemProps({ item, index })}
-                key={`${item.label}${index}`}
+                key={item.label}
                 highlight={highlightedIndex === index}
               >
                 {item.label}

@@ -1,11 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { ResultsContext } from '../context/ResultsContext';
-import { Logo } from '../assets/graphics';
-import { RoundCheck, RoundError } from '../assets/icons';
-import List from './List';
+
+import { Logo } from '~assets/graphics';
+import { RoundCheck, RoundError } from '~assets/icons';
+import { ResultsContext } from '~context/ResultsContext';
+
 import CalcForm from './CalcFormV2';
 import ContactForm from './ContactForm';
+import List from './List';
 import Products from './Products';
 
 const Wrapper = styled.div`
@@ -143,7 +145,7 @@ const Widget = () => {
   const [submited, setSubmited] = useState(null);
 
   useEffect(() => {
-    let timer = setTimeout(() => setSubmited(null), 4000);
+    const timer = setTimeout(() => setSubmited(null), 4000);
 
     return () => clearTimeout(timer);
   }, [submited]);

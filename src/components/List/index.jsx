@@ -1,8 +1,10 @@
-import React, { useState, useContext, memo } from 'react';
-import styled, { css } from 'styled-components';
 import Tooltip from '@reach/tooltip';
-import { Plus, Bin, Pen } from '../../assets/icons';
-import { ListContext } from '../../context/ListContext';
+import { memo, useContext, useState } from 'react';
+import styled, { css } from 'styled-components';
+
+import { Bin, Pen, Plus } from '~assets/icons';
+import { ListContext } from '~context/ListContext';
+
 import Item from './Item';
 
 const Wrapper = styled.div`

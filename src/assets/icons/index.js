@@ -1,11 +1,11 @@
 import Bin from './Bin';
-import Plus from './Plus';
-import MagnifyingGlass from './MagnifyingGlass';
-import RightArrow from './RightArrow';
 import Check from './Check';
+import MagnifyingGlass from './MagnifyingGlass';
+import Pen from './Pen';
+import Plus from './Plus';
+import RightArrow from './RightArrow';
 import RoundCheck from './RoundCheck';
 import RoundError from './RoundError';
-import Pen from './Pen';
 
 export {
   Bin,

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
+import { memo, useContext, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
-import { ListContext } from '../context/ListContext';
-import { Check } from '../assets/icons';
+
+import { Check } from '~assets/icons';
+import { ListContext } from '~context/ListContext';
 
 const Wrapper = styled.div``;
 

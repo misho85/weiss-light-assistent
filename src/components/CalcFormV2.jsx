@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useContext, useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import styled from 'styled-components';
 import * as yup from 'yup';
-import { ListContext } from '../context/ListContext';
-import { ResultsContext } from '../context/ResultsContext';
-import { MagnifyingGlass, Plus } from '../assets/icons';
-import Input from './Input';
+
+import { MagnifyingGlass, Plus } from '~assets/icons';
+import { ListContext } from '~context/ListContext';
+import { ResultsContext } from '~context/ResultsContext';
+import items from '~data/luxItems';
+
 import Checkbox from './Checkbox';
-import items from '../data/luxItems';
+import Input from './Input';
 
 const Wrapper = styled.form`
   position: relative;

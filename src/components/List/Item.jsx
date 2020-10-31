@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext, memo } from 'react';
 import PropTypes from 'prop-types';
+import { memo, useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { ListContext } from '../../context/ListContext';
+
+import { ListContext } from '~context/ListContext';
 
 const wrapperCSS = css`
   width: 100%;
@@ -53,7 +54,7 @@ const Item = ({ selected, data, editActive, setEditActive }) => {
   const handleItemNameChange = e => setItemName(e.target.value);
 
   const handleEditLabel = labelName => {
-    const label = labelName ? labelName : 'novi objekat';
+    const label = labelName || 'novi objekat';
     dispatch({ type: 'EDIT_ITEM', payload: { ...data, label } });
   };
 
@@ -86,7 +87,7 @@ const Item = ({ selected, data, editActive, setEditActive }) => {
       {isInput ? (
         <Input
           value={itemName}
-          autoFocus={true}
+          autoFocus
           placeholder="naziv objekta"
           onKeyUp={handleEnter}
           onChange={handleItemNameChange}

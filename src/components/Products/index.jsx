@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
 import Tooltip from '@reach/tooltip';
-import { ResultsContext } from '../../context/ResultsContext';
-import { ListContext } from '../../context/ListContext';
-import { Plus } from '../../assets/icons';
-import data from '../../data/products';
+import { useContext } from 'react';
+import styled from 'styled-components';
+
+import { Plus } from '~assets/icons';
+import { ListContext } from '~context/ListContext';
+import { ResultsContext } from '~context/ResultsContext';
+import data from '~data/products';
+
 import Product from './Product';
 
 const Wrapper = styled.div`

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const MagnifyingGlass = props => (
   <svg width="1em" height="1em" viewBox="0 0 5.5201 5.5202" {...props}>

@@ -1,13 +1,14 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import { useContext } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import styled from 'styled-components';
 import * as yup from 'yup';
-import { ListContext } from '../context/ListContext';
+
+import { ListContext } from '~context/ListContext';
+import productData from '~data/products';
+
 import Input from './Input';
-import productData from '../data/products';
 
 const API_URL = `https://www.weisslight.eu/wp-json/weisslight-assistant/v1/create-email`;
 
@@ -88,26 +89,26 @@ const ContactForm = ({ setSubmited }) => {
   });
 
   const onSubmit = data => {
-    const assistentData = state.items.map(el => {
-      const lumen = el.kvadratura * el.lux;
+    const assistentData = state.items.map(item => {
+      const lumen = item.kvadratura * item.lux;
 
-      const products = productData.map(el => {
-        const types = el.types.map(el => {
-          const count = countByLumen(lumen, el.flux);
+      const products = productData.map(product => {
+        const types = product.types.map(type => {
+          const count = countByLumen(lumen, type.flux);
           return {
-            snaga: el.snaga,
+            snaga: type.snaga,
             count,
           };
         });
 
         return {
-          name: el.ime,
+          name: product.ime,
           types,
         };
       });
 
       return {
-        ...el,
+        ...item,
         products,
       };
     });
@@ -117,9 +118,11 @@ const ContactForm = ({ setSubmited }) => {
     const postData = async () => {
       try {
         const res = await axios.post(API_URL, { ...allData });
+        // eslint-disable-next-line no-console
         console.log('👉 Returned data:', res.data);
         setSubmited('success');
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(`😱 Axios request failed: ${e.response.status}`);
         setSubmited('error');
       }

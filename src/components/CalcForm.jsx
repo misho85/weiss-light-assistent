@@ -1,12 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useContext, useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { useForm, FormProvider } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
-import { ListContext } from '../context/ListContext';
+
+import { ListContext } from '~context/ListContext';
+
 import { ResultsContext } from '../context/ResultsContext';
-import Input from './Input';
 import Checkbox from './Checkbox';
+import Input from './Input';
 import RecomendedLux from './RecomendedLux';
 
 const Wrapper = styled.form`

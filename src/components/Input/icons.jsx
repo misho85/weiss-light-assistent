@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
 
 export const FormFalse = ({ fill = '#d31654', ...props }) => (
   <svg viewBox="0 0 16.33 16.33" fill={fill} {...props}>

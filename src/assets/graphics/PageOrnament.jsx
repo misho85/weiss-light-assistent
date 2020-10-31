@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const PageOrnament = props => (
   <svg width="2em" height="1em" viewBox="0 0 100 50" {...props}>

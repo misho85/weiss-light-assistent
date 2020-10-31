@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useReducer } from 'react';
-import { usePersistedContext, usePersistedReducer } from '../utils/usePersist';
+import { createContext, useContext, useReducer } from 'react';
+
+import { usePersistedContext, usePersistedReducer } from '~utils/usePersist';
 
 const initialState = {
   items: [
@@ -27,6 +28,9 @@ const initialState = {
 export const ListContext = createContext(initialState);
 
 const reducer = (state, action) => {
+  const itemReplacer = (array, oldItem, newItem) =>
+    array.map(item => (item.id === oldItem.id ? newItem : item));
+
   switch (action.type) {
     case 'ADD_ITEM':
       // return current state if empty
@@ -55,9 +59,6 @@ const reducer = (state, action) => {
         },
       };
     case 'EDIT_ITEM':
-      const itemReplacer = (array, oldItem, newItem) =>
-        array.map(item => (item.id === oldItem.id ? newItem : item));
-
       return {
         ...state,
         items: itemReplacer(state.items, state.selected, action.payload),

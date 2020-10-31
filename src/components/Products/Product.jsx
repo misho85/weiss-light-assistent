@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import { ListContext } from '../../context/ListContext';
+
 import {
+  ImgOrnamentBottom,
   ImgOrnamentRightMobile,
   ImgOrnamentTop,
-  ImgOrnamentBottom,
-} from '../../assets/graphics';
+} from '~assets/graphics';
+import { ListContext } from '~context/ListContext';
 
 const Wrapper = styled.div`
   width: 100%;

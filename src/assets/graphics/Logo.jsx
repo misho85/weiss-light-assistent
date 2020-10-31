@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const Logo = props => (
   <svg width="3em" height="1em" viewBox="0 0 60 20" {...props}>

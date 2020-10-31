@@ -1,7 +1,9 @@
-import React, { useState, useRef, memo } from 'react';
+import { memo, useRef, useState } from 'react';
 import styled from 'styled-components';
-import useOnClickOutside from '../../utils/useOnClickOutside';
-import { MagnifyingGlass } from '../../assets/icons';
+
+import { MagnifyingGlass } from '~assets/icons';
+import useOnClickOutside from '~utils/useOnClickOutside';
+
 import AutoComplete from './AutoComplete';
 
 const Wrapper = styled.div`

@@ -1,8 +1,8 @@
-import felix from '../assets/images/felix.png';
 import atria from '../assets/images/atria.png';
+import elight from '../assets/images/eLight.png';
+import felix from '../assets/images/felix.png';
 import freja from '../assets/images/freja.png';
 import samson from '../assets/images/samson.png';
-import elight from '../assets/images/eLight.png';
 import zvono from '../assets/images/zvono.png';
 
 // broj tipova ogranicen na 5

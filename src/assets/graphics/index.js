@@ -1,8 +1,8 @@
-import PageOrnament from './PageOrnament';
+import ImgOrnamentBottom from './ImgOrnamentBottom';
 import ImgOrnamentRightMobile from './ImgOrnamentRightMobile';
 import ImgOrnamentTop from './ImgOrnamentTop';
-import ImgOrnamentBottom from './ImgOrnamentBottom';
 import Logo from './Logo';
+import PageOrnament from './PageOrnament';
 
 export {
   PageOrnament,

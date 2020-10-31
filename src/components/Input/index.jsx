@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { useFormContext } from 'react-hook-form';
-import { FormFalse, FormTrue } from './icons';
+import styled from 'styled-components';
+
 import ErrorMessage from './ErrorMessage';
+import { FormFalse, FormTrue } from './icons';
 
 const InputContainer = styled.div`
   position: relative;
