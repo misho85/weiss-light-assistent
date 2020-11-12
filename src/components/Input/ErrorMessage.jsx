@@ -1,4 +1,5 @@
-import PropTypes, { memo } from 'prop-types';
+import PropTypes from 'prop-types';
+import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 

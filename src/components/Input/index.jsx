@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { memo, useFormContext } from 'react-hook-form';
+import { memo } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 import ErrorMessage from './ErrorMessage';
