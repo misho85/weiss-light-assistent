@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { memo } from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -20,4 +20,4 @@ ErrorMessage.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default ErrorMessage;
+export default memo(ErrorMessage);

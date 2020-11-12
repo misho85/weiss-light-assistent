@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
-import { useFormContext } from 'react-hook-form';
+import { memo, useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 import ErrorMessage from './ErrorMessage';
@@ -133,4 +132,4 @@ Input.propTypes = {
   contact: PropTypes.bool,
 };
 
-export default Input;
+export default memo(Input);
